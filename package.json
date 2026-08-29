@@ -1,0 +1,11 @@
+{
+  "name": "parinda-motorworks-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix parinda-motorworks",
+    "build": "npm run build --prefix parinda-motorworks",
+    "start": "npm run start --prefix parinda-motorworks",
+    "lint": "npm run lint --prefix parinda-motorworks"
+  }
+}
