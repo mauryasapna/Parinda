@@ -1,8 +1,5 @@
-'use client';
-
-import React from 'react';
-import ArenaClientPage from './ArenaClientPage';
+import { redirect } from 'next/navigation';
 
 export default function ArenaPage() {
-  return <ArenaClientPage />;
+  redirect('/');
 }
