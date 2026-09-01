@@ -91,10 +91,10 @@ export const bookingPackages: PassPackage[] = [
     desc: '6 hours total track access (Ride anytime between 8:00 AM – 8:00 PM) for 4x4 SUVs, Gypsy, Thar, and off-road vehicles.',
     features: [
       '6 Hours total track access (8:00 AM – 8:00 PM)',
-      'Natural stream water crossing & off-road track arena',
-      '4x4 (1:4) standby winch recovery support on site',
+      'Water crossing & off-road track arena',
+      '4x4 standby winch recovery support on site',
       'Entry to The Nest Eco-Café view terrace deck',
-      'Clean hygiene hub access (3 Toilets + 3 Showers)'
+      'Clean hygiene hub access (Private Washrooms & Showers)'
     ],
     highlights: [
       { icon: '🚙', text: 'Car / 4×4' },
@@ -116,7 +116,7 @@ export const bookingPackages: PassPackage[] = [
       'Exclusive early morning track session (5:00 AM – 8:00 AM)',
       'Overnight sanctuary access & campfire gathering',
       'Park your motorcycle in front of your camping pitch',
-      'Full hygiene hub access with 3 toilets & hot showers'
+      'Full hygiene hub access with clean toilets & hot showers'
     ],
     highlights: [
       { icon: '🏍️', text: 'Motorcycle' },
@@ -303,19 +303,19 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'WORKSHOP & CARE',
     category: 'SOLID TECH BAY',
-    text: 'Heavy-duty solid construction equipped with pro tools, tire machines, vehicle bays, and certified on-site mechanics on duty.',
+    text: 'Heavy-duty solid construction equipped with pro tools, tire machines, vehicle bays, and on-site mechanics on duty.',
     image: '/images/parinda-workshop-real.jpg',
     tag: 'Priority 03'
   },
   {
-    title: 'NATURAL WATER CROSSING & TRACKS',
+    title: 'WATER CROSSING & TRACKS',
     category: 'COMMUNITY TRACKS',
-    text: 'Natural river stream crossing over river rockbeds, gravel, and mud tracks built with 80% bamboo and timber architecture.',
+    text: 'Water stream crossing over rockbeds, gravel, and mud tracks built with sustainable timber and natural architecture.',
     image: '/images/parinda-exp-water-splash.jpg',
     tag: 'Priority 04'
   },
   {
-    title: 'TRAINING & CLINICS',
+    title: 'TRAINING & SKILL SESSIONS',
     category: 'SKILL EDUCATION',
     text: 'Precision dirt mounds, obstacle courses, sand pits, and off-road technique coaching for adventure machines and 4x4 vehicles.',
     image: '/images/bike-skill-mound.jpg',
@@ -346,36 +346,36 @@ export const experiences: ExperienceItem[] = [
 
 // Park Facilities
 export const facilities: FacilityItem[] = [
-  { name: 'Terraced Camping', image: '/images/fac-camping.jpg', desc: 'Forest pitches with in-front quiet vehicle parking & campfire circles', tag: 'Stay #01' },
-  { name: 'The Nest (Cafe and enjoy view place)', image: '/images/the-nest-pavilion-sunset.jpg', desc: 'Open-deck natural timber pavilion with central bonfire & panoramic mountain valley view', tag: 'Dining #02' },
+  { name: 'Base (Camping Area)', image: '/images/fac-camping.jpg', desc: 'Forest pitches with in-front The Yard vehicle parking & campfire circles', tag: 'Stay #01' },
+  { name: 'The Nest (Cafe and enjoy view place)', image: '/images/the-nest-pavilion-sunset.jpg', desc: 'Open-deck natural timber pavilion with central bonfire & mountain valley view', tag: 'Dining #02' },
   { name: 'Solid Workshop Bay', image: '/images/parinda-workshop-real.jpg', desc: 'Built of solid materials with full tools, machine stalls & mechanics on duty', tag: 'Service #03' },
-  { name: 'Natural Water Crossing', image: '/images/parinda-exp-water-splash.jpg', desc: 'Natural stream with rockbed & mud crossing for adventure enthusiasts', tag: 'Tracks #04' },
+  { name: 'Water Crossing', image: '/images/parinda-exp-water-splash.jpg', desc: 'Water stream with rockbed & mud crossing for adventure enthusiasts', tag: 'Tracks #04' },
   { name: 'Reception & Gear Closet', image: '/images/parinda-store-reception.jpg', desc: 'Welcome lounge with gear closet (jackets, helmets, gloves) & mirror', tag: 'Gear Hub #05' },
-  { name: '3 Separate Private Toilets', image: '/images/hygiene-toilets-hallway.jpg', desc: '3 fully isolated, private sanitized washroom cubicles with modern fittings', tag: 'Hygiene #06' },
-  { name: '3 Separate Private Showers', image: '/images/hygiene-private-shower.jpg', desc: '3 individual high-pressure hot shower stalls with textured stone tiling', tag: 'Hygiene #07' },
-  { name: '4x4 Standby Recovery', image: '/images/4x4-convoy-trail.jpg', desc: '4x4 (1:4) heavy-duty winch & recovery equipment on active standby', tag: 'Recovery #08' },
-  { name: 'On-site Safety Kit', image: '/images/fac-firstaid.jpg', desc: 'Dedicated safety equipment & emergency response kit on standby', tag: 'Safety #09' }
+  { name: 'Our Toilets', image: '/images/hygiene-toilets-hallway.jpg', desc: '' },
+  { name: 'Our Showers', image: '/images/hygiene-private-shower.jpg', desc: '' },
+  { name: '4x4 Standby Recovery', image: '/images/4x4-convoy-trail.jpg', desc: 'Dedicated 4x4 heavy-duty winch & recovery equipment on active standby', tag: 'Recovery #08' },
+  { name: 'On-Site Dedicated First Aid Kit', image: '/images/fac-firstaid.jpg', desc: 'On-site dedicated first aid equipment on standby', tag: 'Safety #09' }
 ];
 
 // Master Blueprint Locations
 export const parkLocations: ParkLocationItem[] = [
   {
     id: 'camping',
-    name: 'Camping Under The Stars',
-    shortName: '1. Camping Grounds',
+    name: 'Base • Camping Under The Stars',
+    shortName: '1. Base (Camping)',
     subtitle: 'Forest Canopy, Family & Friends',
-    text: 'Terraced camping nestled deep in the natural woods. Park your vehicle quietly right outside your own camp/tent. Quiet zone policy ensures uninterrupted natural serenity.',
+    text: 'Camping at Base. Park your motorcycle directly outside your tent.',
     image: '/images/camping-tents-forest.jpg',
     features: [
       'Forest, Family, & Friends camp options',
-      'Park vehicle quietly outside your tent',
+      'Park vehicle quietly in The Yard outside your tent',
       'Strict zero-honking quiet zone rule',
-      '3 Separate Toilets + 3 Separate Private Showers'
+      'Our Toilets & Our Showers'
     ],
     specs: [
       { label: 'Camp Types', value: 'Forest / Family / Friends' },
-      { label: 'Vehicle Parking', value: 'Direct In-Front Pitch' },
-      { label: 'Hygiene Hub', value: '3 Toilets + 3 Showers' },
+      { label: 'The Yard Parking', value: 'Direct In-Front Pitch' },
+      { label: 'Hygiene Hub', value: 'Private Washrooms & Showers' },
       { label: 'Rule', value: 'No Honking • Pure Serenity' }
     ],
     pinCoords: { top: '18%', left: '78%' }
@@ -385,17 +385,17 @@ export const parkLocations: ParkLocationItem[] = [
     name: 'The Nest - Sustainable Eco-Café',
     shortName: '2. The Nest Café',
     subtitle: 'Pure Wood & Stone Architecture',
-    text: 'An open-deck panoramic café built predominantly of natural timber, logs, and stone boulders with minimal metal use. Perched above the valley to observe trail tracks, gather around central bonfires, and refuel.',
+    text: 'An open-deck café built predominantly of natural timber, logs, and stone boulders with minimal metal use. Perched above the valley to observe trail tracks, gather around central bonfires, and refuel.',
     image: '/images/the-nest-sunset-deck.jpg',
     features: [
       '100% Wood & Stone sustainable architecture',
-      '180° Panoramic mountain valley view deck',
+      'Open timber deck lounge & valley views',
       'Central bonfire deck & social gathering lounge',
       'Zero artificial hotel or resort structures'
     ],
     specs: [
       { label: 'Architecture', value: 'Natural Wood & Stone' },
-      { label: 'View', value: '180° Panoramic Mountain Deck' },
+      { label: 'View', value: 'Open Timber Mountain Deck' },
       { label: 'Atmosphere', value: 'Central Bonfire & Gathering' },
       { label: 'Structure', value: 'Sustainable Eco-Pavilion' }
     ],
@@ -406,17 +406,17 @@ export const parkLocations: ParkLocationItem[] = [
     name: 'Parinda Workshop & Tech Bay',
     shortName: '3. Machine Workshop',
     subtitle: 'Heavy-Duty Build & On-Site Mechanics',
-    text: 'Built with solid, reinforced construction to handle heavy trail machines. Equipped with diagnostic tools, tire machines, specialized fabrication gear, dedicated parking stalls, and certified on-site mechanics actively on duty.',
+    text: 'Built with solid, reinforced construction to handle heavy trail machines. Equipped with diagnostic tools, tire machines, specialized fabrication gear, dedicated parking stalls, and mechanics on duty.',
     image: '/images/parinda-workshop-real.jpg',
     features: [
       'Solid heavy-duty construction & machine stalls',
       'Complete vehicle repair tools & tire equipment',
       'Dedicated off-road machine stalls & parking',
-      'On-site certified mechanics on active duty'
+      'Mechanics on active duty'
     ],
     specs: [
       { label: 'Build Quality', value: 'Solid Reinforced Material' },
-      { label: 'Staffing', value: 'On-Site Certified Mechanics' },
+      { label: 'Staffing', value: 'On-Site Mechanics' },
       { label: 'Tooling', value: 'Tire Changer, Lift & Diagnostics' },
       { label: 'Capacity', value: 'Dedicated Multi-Vehicle Bays' }
     ],
@@ -424,22 +424,22 @@ export const parkLocations: ParkLocationItem[] = [
   },
   {
     id: 'watercrossing',
-    name: 'Natural Water Crossing & Trail',
+    name: 'Water Crossing & Trail',
     shortName: '4. Water Crossing',
-    subtitle: 'Natural Stream for Adventure Enthusiasts',
-    text: 'A real riverbed crossing over authentic river stones, mud, and gravel. Engineered with 80% natural bamboo and timber structures to blend completely into the surrounding forest.',
+    subtitle: 'Water Stream for Adventure Enthusiasts',
+    text: 'A real stream crossing over authentic stones, mud, and gravel. Engineered with natural timber structures to blend completely into the surrounding forest.',
     image: '/images/parinda-exp-water-splash.jpg',
     features: [
-      'Authentic natural rockbed & river gravel',
-      '80% Bamboo, timber & natural materials',
+      'Authentic rockbed & gravel crossing',
+      'Sustainable timber & natural materials',
       'Calibrated for adventure bikes & 4x4 vehicles',
       'Zero artificial resort pool elements'
     ],
     specs: [
-      { label: 'Riverbed Surface', value: 'Natural Stone & Gravel' },
-      { label: 'Architecture', value: '80% Bamboo & Wood' },
+      { label: 'Pondbed Surface', value: 'Natural Stone & Gravel' },
+      { label: 'Architecture', value: 'Timber & Stone' },
       { label: 'Vehicles', value: 'ADV Bikes & 4x4 SUVs' },
-      { label: 'Recovery', value: '4x4 (1:4) Standby' }
+      { label: 'Recovery', value: '4x4 Standby Winch' }
     ],
     pinCoords: { top: '35%', left: '42%' }
   },
@@ -448,20 +448,21 @@ export const parkLocations: ParkLocationItem[] = [
     name: 'Parinda Store & Reception Lounge',
     shortName: '5. Store & Reception',
     subtitle: 'Check-In, Gear Display & Dressing Mirror',
-    text: 'Welcome center with safety briefing station, service bay connection, and an open gear closet with full-length dressing mirror displaying adventure jackets, gloves, and helmets available for purchase and fitting.',
+    text: 'The sanctuary check-in and briefing area. Features a prominent open gear closet with full-length mirror, showcasing adventure jackets, riding gloves, and branded helmets.',
     image: '/images/parinda-store-reception.jpg',
     features: [
-      'Welcome counter & briefing orientation',
-      'Gear closet with jackets, helmets & gloves',
-      'Full-length dressing mirror for fitting',
-      'Direct connection to indoor service bay'
+      'Open gear closet with jackets, helmets & gloves',
+      'Full-length dressing mirror for gear fitting',
+      'Visitor check-in & digital track pass validation',
+      'Parinda official stickers, caps & apparel store'
     ],
     specs: [
-      { label: 'Gear Display', value: 'Jackets, Gloves, Helmets' },
-      { label: 'Fitting Area', value: 'Full-Length Dressing Mirror' },
-      { label: 'Connection', value: 'Direct Service Bay Access' }
+      { label: 'Gear Display', value: 'Helmets, Jackets & Gloves' },
+      { label: 'Fitting', value: 'Full-Length Mirror' },
+      { label: 'Pass Check', value: 'Digital RFID / QR Check-In' },
+      { label: 'Store', value: 'Apparel & Trail Gear' }
     ],
-    pinCoords: { top: '65%', left: '16%' }
+    pinCoords: { top: '50%', left: '12%' }
   },
   {
     id: 'nesling',
@@ -540,5 +541,59 @@ export const galleryImages = [
     category: 'Overland',
     src: '/images/4x4-convoy-trail.jpg',
     span: 'wide'
+  }
+];
+
+export interface ReviewItem {
+  id: string;
+  name: string;
+  role: string;
+  vehicle: string;
+  rating: number;
+  date: string;
+  comment: string;
+  verified?: boolean;
+}
+
+export const initialReviews: ReviewItem[] = [
+  {
+    id: 'rev-1',
+    name: 'Rohan Deshmukh',
+    role: 'Adventure Tourer',
+    vehicle: 'Royal Enfield Himalayan 450',
+    rating: 5,
+    date: 'August 2026',
+    comment: 'The natural stream water crossing is authentic and challenging! No gimmicks, pure trail craft. Camped overnight under full moon and had direct motorcycle parking outside my tent.',
+    verified: true
+  },
+  {
+    id: 'rev-2',
+    name: 'Vikram Singh & Convoy',
+    role: 'Overland Explorer',
+    vehicle: 'Mahindra Thar 4x4',
+    rating: 5,
+    date: 'July 2026',
+    comment: 'Parinda is exactly what Indian 4x4 enthusiasts were missing. Testing the articulation ramp and rockbed trail with guidance from local marshals was brilliant. The Nest food is top notch!',
+    verified: true
+  },
+  {
+    id: 'rev-3',
+    name: 'Ananya & Sahil Sharma',
+    role: 'Weekend Camper',
+    vehicle: 'KTM 390 Adventure',
+    rating: 5,
+    date: 'August 2026',
+    comment: 'Clean washrooms, hot water showers, and zero-honking quiet forest vibes. Loved the local Jharkhand hospitality and bonfire evening around The Nest terrace.',
+    verified: true
+  },
+  {
+    id: 'rev-4',
+    name: 'Harpreet Sandhu',
+    role: 'Machine Builder & Rider',
+    vehicle: 'BMW R1250GS',
+    rating: 5,
+    date: 'June 2026',
+    comment: 'The workshop bay is well equipped with high-pressure air and essential tools. Great place for bike prep before heading out on long highway stints.',
+    verified: true
   }
 ];

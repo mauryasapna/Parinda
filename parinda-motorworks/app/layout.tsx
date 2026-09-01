@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Parinda Motorworks | Adventure. Community. Experience.',
+  title: 'Parinda | Adventure Mobility Experience Center',
   description: 'A premium adventure mobility destination for off-road riding, skill development, camping, food, community and vehicle experiences.',
 };
 

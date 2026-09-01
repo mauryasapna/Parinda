@@ -120,12 +120,12 @@ export const panoramicScenes: PanoramicScene[] = [
     title: '5. Water Crossing with Track',
     category: '5. WATER CROSSING WITH TRACK',
     image: '/images/scene-water-crossing.jpg',
-    description: 'Natural shallow mountain stream crossing over river rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate water spray, pebbles, and transition into forest tracks.',
+    description: 'Shallow mountain stream crossing over pond rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate water spray, pebbles, and transition into forest tracks.',
     specs: [
       { label: 'Water Depth', value: '450mm - 700mm Dynamic Wading' },
-      { label: 'Riverbed Surface', value: 'Natural Stone & River Gravel' },
-      { label: 'Architecture', value: '80% Bamboo & Wood Structures' },
-      { label: 'Standby Recovery', value: '4x4 (1:4) Winch Crew on Duty' }
+      { label: 'Pondbed Surface', value: 'Natural Stone & Gravel' },
+      { label: 'Architecture', value: 'Sustainable Timber Structures' },
+      { label: 'Standby Recovery', value: 'Dedicated 4x4 Winch Crew on Duty' }
     ],
     hotspots: [
       { id: 'wc1', title: '4x4 Water Wading Line', subtitle: 'Mahindra Thar water splash crossing', yaw: -15, pitch: -8, icon: '🚙', tag: 'River Track' },

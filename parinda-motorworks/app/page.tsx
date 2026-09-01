@@ -31,7 +31,10 @@ import {
   Target,
   Phone,
   Mail,
-  MessageCircle
+  MessageCircle,
+  Star,
+  Send,
+  Check
 } from 'lucide-react';
 import { ParindaLogo } from '../components/ParindaLogo';
 import {
@@ -42,10 +45,12 @@ import {
   campingOptions,
   nestMenuItems,
   bookingPackages,
+  initialReviews,
   ExperienceItem,
   ParkLocationItem,
   MenuItem,
-  CampingOption
+  CampingOption,
+  ReviewItem
 } from '../data/site';
 
 const fadeUp = {
@@ -61,11 +66,48 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [activeLightboxImage, setActiveLightboxImage] = useState<{ src: string; title: string; category: string } | null>(null);
 
-  const categories = ['all', 'Camping', 'The Nest Café', 'Water Crossing', 'Workshop', 'Skill Zone', 'Community', 'Overland'];
+  // Reviews State
+  const [reviewsList, setReviewsList] = useState<ReviewItem[]>(initialReviews);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [newReviewName, setNewReviewName] = useState('');
+  const [newReviewVehicle, setNewReviewVehicle] = useState('');
+  const [newReviewRole, setNewReviewRole] = useState('Adventure Rider');
+  const [newReviewRating, setNewReviewRating] = useState(5);
+  const [newReviewComment, setNewReviewComment] = useState('');
+  const [reviewSubmitSuccess, setReviewSubmitSuccess] = useState(false);
 
-  const filteredGallery = selectedCategory === 'all'
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newReviewName.trim() || !newReviewComment.trim()) return;
+    const newEntry: ReviewItem = {
+      id: 'rev-' + Date.now(),
+      name: newReviewName.trim(),
+      role: newReviewRole || 'Community Guest',
+      vehicle: newReviewVehicle.trim() || 'Adventure Machine',
+      rating: newReviewRating,
+      date: 'Just now',
+      comment: newReviewComment.trim(),
+      verified: true
+    };
+    setReviewsList([newEntry, ...reviewsList]);
+    setReviewSubmitSuccess(true);
+    setTimeout(() => {
+      setReviewModalOpen(false);
+      setReviewSubmitSuccess(false);
+      setNewReviewName('');
+      setNewReviewVehicle('');
+      setNewReviewComment('');
+    }, 1500);
+  };
+
+  const categories = ['All', 'Camping', 'The Nest Café', 'Water Crossing', 'Workshop', 'Sanctuary', 'Founder', 'Overland'];
+
+  const filteredGallery = selectedCategory.toLowerCase() === 'all'
     ? galleryImages
-    : galleryImages.filter(img => img.category.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(img.category.toLowerCase()));
+    : galleryImages.filter(img => 
+        img.category.toLowerCase().includes(selectedCategory.toLowerCase()) || 
+        selectedCategory.toLowerCase().includes(img.category.toLowerCase())
+      );
 
   const filteredMenu = menuFilter === 'all'
     ? nestMenuItems
@@ -77,32 +119,51 @@ export default function Home() {
     <main>
       {/* NAVBAR */}
       <header className="nav">
-        <a href="#" className="brand" aria-label="Parinda Motorworks Home">
+        <a href="#" className="brand" aria-label="Parinda Home">
           <ParindaLogo size="sm" showSubtitle={true} />
         </a>
 
+        {/* Center Desktop Links */}
+        <div className="nav-center-links">
+          <a href="#overview">Overview</a>
+          <a href="#about">Our Story</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#gallery">Visual Documentation</a>
+        </div>
+
+        {/* Desktop Right Actions & Mobile Drawer */}
         <nav className={`navlinks ${menuOpen ? 'open' : ''}`}>
-          {[
-            { id: 'overview', label: 'Ecosystem' },
-            { id: 'caravan', label: 'Caravan' },
-            { id: 'workshop', label: 'Workshop' },
-            { id: 'experiences', label: 'Experiences' },
-            { id: 'camp', label: 'Camp' },
-            { id: 'store', label: 'Store' },
-            { id: 'events', label: 'Events' },
-            { id: 'about', label: 'Our Story' }
-          ].map(x => (
-            <a key={x.id} href={`#${x.id}`} onClick={() => setMenuOpen(false)}>
-              {x.label}
+          <div className="nav-mobile-only-links">
+            <a href="#overview" onClick={() => setMenuOpen(false)}>
+              <span>Overview</span>
+              <ChevronRight size={14} color="var(--accent)" />
             </a>
-          ))}
-          <a className="navcta" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
-            Book on WhatsApp
-          </a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>
+              <span>Our Story</span>
+              <ChevronRight size={14} color="var(--accent)" />
+            </a>
+            <a href="#reviews" onClick={() => setMenuOpen(false)}>
+              <span>Reviews</span>
+              <ChevronRight size={14} color="var(--accent)" />
+            </a>
+            <a href="#gallery" onClick={() => setMenuOpen(false)}>
+              <span>Visual Documentation</span>
+              <ChevronRight size={14} color="var(--accent)" />
+            </a>
+          </div>
+
+          <div className="nav-actions-cluster">
+            <a className="nav-mobile-contact-item" href="tel:+919934906882" onClick={() => setMenuOpen(false)}>
+              <Phone size={13} color="var(--accent-light)" /> <span>+91 9934906882</span>
+            </a>
+            <a className="navcta" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+              💬 Join WhatsApp Community
+            </a>
+          </div>
         </nav>
 
         <button className="menubtn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </header>
 
@@ -127,7 +188,7 @@ export default function Home() {
             transition={{ delay: 0.5 }}
             className="lead"
           >
-            A premier destination for off-road machines, community gatherings, brand launches, driving skill clinics, and weekend getaways nestled harmoniously in natural forest surroundings.
+            A premium destination for off-road machines, community gatherings, brand launches, driving skill sessions, and weekend getaways nestled harmoniously in natural forest surroundings.
           </motion.p>
 
           <motion.div
@@ -136,8 +197,8 @@ export default function Home() {
             transition={{ delay: 0.65 }}
             className="actions"
           >
-            <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
-              Book Passes / WhatsApp Community <Ticket size={16} />
+            <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass%20or%20slot." target="_blank" rel="noopener noreferrer">
+              Book Passes <Ticket size={16} />
             </a>
             <a className="btn ghost" href="#camp">
               Explore Camping &amp; Retreat <TentTree size={16} />
@@ -151,15 +212,15 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          PARINDA MASTER BRAND & 6 VERTICALS (ECOSYSTEM HUB)
+          PARINDA ECOSYSTEM & 6 VERTICALS (ECOSYSTEM HUB)
           ========================================================================= */}
       <section className="masterbrand-section" id="overview">
         <div className="masterbrand-head">
-          <p className="eyebrow">THE MASTER BRAND</p>
+          <p className="eyebrow">OVERVIEW</p>
           <h2>PARINDA</h2>
           <p className="masterbrand-subtitle">ADVENTURE MOBILITY EXPERIENCE CENTRE</p>
           <p className="masterbrand-lead">
-            Underneath Parinda, six distinct verticals create a complete ecosystem for riders, drivers, machine builders, and brand expeditions.
+            Parinda is an adventure mobility destination where people ride, camp, learn, and experience the outdoors all in one place.
           </p>
         </div>
 
@@ -185,24 +246,24 @@ export default function Home() {
             <div className="vertical-icon-wrapper">
               <Target size={26} />
             </div>
-            <h3 className="vertical-card-title">PARINDA EXPERIENCES</h3>
-            <p className="vertical-card-tagline">Off-road, Track &amp; Driving Experiences</p>
+            <h3 className="vertical-card-title">OFF-ROAD TRACK</h3>
+            <p className="vertical-card-tagline">Off-road, Mud &amp; Water Crossing Trails</p>
           </a>
 
           <a href="#camp" className="vertical-card">
             <div className="vertical-icon-wrapper">
               <TentTree size={26} />
             </div>
-            <h3 className="vertical-card-title">PARINDA CAMP</h3>
-            <p className="vertical-card-tagline">Camping &amp; Outdoor Experiences</p>
+            <h3 className="vertical-card-title">PARINDA BASE</h3>
+            <p className="vertical-card-tagline">Camping &amp; Outdoor Living</p>
           </a>
 
-          <a href="#store" className="vertical-card">
+          <a href="#reception" className="vertical-card">
             <div className="vertical-icon-wrapper">
               <ShoppingBag size={26} />
             </div>
-            <h3 className="vertical-card-title">PARINDA STORE</h3>
-            <p className="vertical-card-tagline">Merchandise &amp; Adventure Gear</p>
+            <h3 className="vertical-card-title">PARINDA RECEPTION</h3>
+            <p className="vertical-card-tagline">Welcome Lounge, Check-in &amp; Gear</p>
           </a>
 
           <a href="#events" className="vertical-card">
@@ -210,21 +271,21 @@ export default function Home() {
               <Sparkles size={26} />
             </div>
             <h3 className="vertical-card-title">PARINDA EVENTS</h3>
-            <p className="vertical-card-tagline">Corporate, OEM &amp; Brand Experiences</p>
+            <p className="vertical-card-tagline">Corporate &amp; Brand Gatherings</p>
           </a>
         </div>
 
-        {/* Master Brand Banner */}
+        {/* Ecosystem Footer Banner */}
         <div className="masterbrand-footer-banner">
           <p>
-            THAT MAKES <span>PARINDA</span> ITSELF THE MASTER BRAND.
+            WELCOME TO <span>PARINDA</span> • ADVENTURE MOBILITY DESTINATION
           </p>
         </div>
       </section>
 
 
       {/* =========================================================================
-          PARINDA VERTICAL: PARINDA CAMP (CAMPING & OUTDOOR EXPERIENCES)
+          PARINDA VERTICAL: PARINDA BASE (CAMPING & OUTDOOR LIVING)
           ========================================================================= */}
       <section className="priority-section section" id="camp">
         {/* 50/50 Camping Showcase Grid with 3 Real Images */}
@@ -233,69 +294,69 @@ export default function Home() {
           <div className="nest-visuals">
             <div
               className="nest-visual-main"
-              onClick={() => setActiveLightboxImage({ src: '/images/camping-bikers-vantage.jpg', title: "The Biker's Vantage • Moonlit Night Camp & Stargazing", category: 'Camping' })}
+              onClick={() => setActiveLightboxImage({ src: '/images/camping-bikers-vantage.jpg', title: 'Night Camping & Stargazing', category: 'Camping' })}
               style={{ cursor: 'pointer' }}
             >
-              <img src="/images/camping-bikers-vantage.jpg" alt="The Biker's Vantage - Moonlit Stargazing Camp" />
+              <img src="/images/camping-bikers-vantage.jpg" alt="Night Camping & Stargazing" />
               <div className="image-caption-badge">
-                <span>THE BIKER&apos;S VANTAGE • FULL MOON NIGHT CAMP</span>
+                <span>NIGHT CAMPING &amp; STARGAZING</span>
               </div>
             </div>
 
             <div className="nest-visual-side">
               <div
-                onClick={() => setActiveLightboxImage({ src: '/images/camping-valley-riverside.jpg', title: 'The Valley Lights & Riverside Camp', category: 'Camping' })}
+                onClick={() => setActiveLightboxImage({ src: '/images/camping-valley-riverside.jpg', title: 'The Valley Lights & Pondside Camp', category: 'Camping' })}
                 style={{ cursor: 'pointer' }}
               >
-                <img src="/images/camping-valley-riverside.jpg" alt="The Valley Lights & Riverside Camp" />
+                <img src="/images/camping-valley-riverside.jpg" alt="The Valley Lights & Pondside Camp" />
               </div>
               <div
-                onClick={() => setActiveLightboxImage({ src: '/images/camping-tents-forest.jpg', title: 'Terraced Forest Pitches & Direct In-Front Vehicle Parking', category: 'Camping' })}
+                onClick={() => setActiveLightboxImage({ src: '/images/camping-tents-forest.jpg', title: 'Base Forest Pitches & The Yard Parking', category: 'Camping' })}
                 style={{ cursor: 'pointer' }}
               >
-                <img src="/images/camping-tents-forest.jpg" alt="Terraced Forest Pitch and Camp Setup" />
+                <img src="/images/camping-tents-forest.jpg" alt="Base Terraced Forest Pitch and Camp Setup" />
               </div>
             </div>
           </div>
 
           {/* Right: Camping Inclusions & Info */}
           <div className="nest-copy">
-            <span className="priority-pill">PRIORITY 01 • NATURE IMMERSION</span>
+            <span className="priority-pill">PARINDA BASE</span>
             <h2>
-              PARINDA CAMP.<br />
-              <span>CAMPING &amp; OUTDOOR EXPERIENCES.</span>
+              PARINDA BASE.<br />
+              <span>CAMPING &amp; OUTDOOR LIVING.</span>
             </h2>
             <p className="copy">
-              Terraced camping nestled deep in the natural woods. Park your motorcycle or 4x4 vehicle quietly directly outside your own tent. Gather around central campfire circles, experience full moon stargazing, and embrace uninterrupted natural forest serenity.
+              Camping at Base. Park your motorcycle directly outside your tent.
             </p>
 
             <div className="nest-highlights-grid">
               <div className="nest-pill">
                 <Bike size={18} color="#c47c43" />
                 <div>
-                  <b>Direct In-Front Parking</b>
-                  <span>Park your motorcycle or 4x4 quietly right outside your tent pitch.</span>
+                  <b>The Yard (In-Front Parking)</b>
+                  <span>Park your motorcycle or 4x4 quietly at The Yard right outside your tent pitch.</span>
                 </div>
               </div>
               <div className="nest-pill highlight">
                 <Sparkles size={18} color="#e5995e" />
                 <div>
-                  <b>3 Toilets + 3 Hot Showers</b>
-                  <span>Clean, private sanitized washrooms &amp; hot showers on 24h standby.</span>
+                  <b>Our Toilets &amp; Our Showers</b>
+                  <span>Our toilets and our showers on 24h standby.</span>
                 </div>
               </div>
             </div>
 
             <div className="chips">
-              <span>🏕️ Rent a Parinda Tent (₹500/night)</span>
+              <span>🏕️ Do-It-Yourself (DIY) Tent Pitch (₹500/night)</span>
               <span>🎒 Bring Your Own Tent (₹250/night)</span>
-              <span>🌌 Full Moon Stargazing</span>
+              <span>🌌 Night Stargazing</span>
               <span>🔥 Central Bonfire Circles</span>
               <span>🤫 Strict Zero-Honking Quiet Zone</span>
             </div>
 
             <div style={{ marginTop: 24, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-              <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
+              <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20Camping%20Pass." target="_blank" rel="noopener noreferrer">
                 Book Camping Pass <ArrowRight size={16} />
               </a>
               <a className="btn ghost" href="#packages-spotlight">
@@ -320,7 +381,7 @@ export default function Home() {
             >
               <img src="/images/the-nest-pavilion-sunset.jpg" alt="The Nest Open Deck Pavilion Lounge, Central Fire Pit & Mountain Valley View" />
               <div className="image-caption-badge">
-                <span>100% TIMBER &amp; STONE ARCHITECTURE • PANORAMIC VIEW</span>
+                <span>100% TIMBER &amp; STONE ARCHITECTURE</span>
               </div>
             </div>
             <div className="nest-visual-side">
@@ -340,13 +401,13 @@ export default function Home() {
           </div>
 
           <div className="nest-copy">
-            <span className="priority-pill">PARINDA VERTICAL • THE NEST</span>
+            <span className="priority-pill">THE NEST</span>
             <h2>
               THE NEST<br />
               <span>(CAFE AND ENJOY VIEW PLACE).</span>
             </h2>
             <p className="copy">
-              An open-deck sustainable timber and stone pavilion perched high above the valley. Gather around roaring central bonfires, relax in comfortable leather armchairs, observe trail tracks, and enjoy panoramic 180° sunset views.
+              An open-deck sustainable timber and stone pavilion perched high above the valley. Gather around roaring central bonfires, relax in comfortable leather armchairs, observe trail tracks, and enjoy sunset views.
             </p>
 
             {/* Architecture Highlights */}
@@ -355,7 +416,7 @@ export default function Home() {
                 <Coffee size={18} color="#c47c43" />
                 <div>
                   <b>Open Timber Deck &amp; Lounge</b>
-                  <span>180° Panoramic mountain valley view seating &amp; rustic bar.</span>
+                  <span>Open-deck timber lounge seating &amp; rustic bar.</span>
                 </div>
               </div>
               <div className="nest-pill highlight">
@@ -370,14 +431,43 @@ export default function Home() {
             <div className="chips">
               <span>Open Deck Mountain Café</span>
               <span>100% Wood &amp; Stone Architecture</span>
-              <span>180° Panoramic View</span>
+              <span>Open Timber Deck Lounge</span>
               <span>Central Bonfire Deck</span>
               <span>Zero Artificial Hotel Structures</span>
             </div>
+
+            {/* THE NEST OPERATING MODEL (TIMINGS) */}
+            <div style={{ marginTop: 24, background: 'rgba(196, 124, 67, 0.08)', border: '1px solid rgba(196, 124, 67, 0.3)', borderRadius: 8, padding: '18px 20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <Coffee size={18} color="var(--accent-light)" />
+                <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: 18, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--paper)', margin: 0 }}>
+                  THE NEST OPERATING MODEL
+                </h4>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 10 }}>
+                <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '8px 12px', borderRadius: 6, border: '1px solid var(--line-light)' }}>
+                  <span style={{ fontSize: 11, color: 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 700, display: 'block' }}>Breakfast</span>
+                  <b style={{ fontSize: 13, color: '#fff' }}>8:00 AM – 10:00 AM</b>
+                </div>
+                <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '8px 12px', borderRadius: 6, border: '1px solid var(--line-light)' }}>
+                  <span style={{ fontSize: 11, color: 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 700, display: 'block' }}>Lunch</span>
+                  <b style={{ fontSize: 13, color: '#fff' }}>12:00 PM – 2:00 PM</b>
+                </div>
+                <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '8px 12px', borderRadius: 6, border: '1px solid var(--line-light)' }}>
+                  <span style={{ fontSize: 11, color: 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 700, display: 'block' }}>Evening Snacks</span>
+                  <b style={{ fontSize: 13, color: '#fff' }}>4:00 PM – 6:00 PM</b>
+                </div>
+                <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '8px 12px', borderRadius: 6, border: '1px solid var(--line-light)' }}>
+                  <span style={{ fontSize: 11, color: 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 700, display: 'block' }}>Dinner</span>
+                  <b style={{ fontSize: 13, color: '#fff' }}>7:00 PM – 9:00 PM</b>
+                </div>
+              </div>
+              <div style={{ marginTop: 10, padding: '6px 12px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.25)', borderRadius: 4, display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#fca5a5' }}>
+                <span>🔒</span> <b>Kitchen Closed:</b> 10:00 PM – 8:00 AM
+              </div>
+            </div>
           </div>
         </div>
-
-
       </section>
 
       {/* =========================================================================
@@ -386,13 +476,13 @@ export default function Home() {
       <section className="priority-section section" id="workshop">
         <div className="workshop-grid">
           <div className="workshop-copy">
-            <span className="priority-pill">PARINDA VERTICAL • PARINDA WORKSHOP</span>
+            <span className="priority-pill">PARINDA WORKSHOP</span>
             <h2>
               PARINDA WORKSHOP.<br />
               <span>SERVICE, PREPARATION &amp; MECHANICAL SUPPORT.</span>
             </h2>
             <p className="copy">
-              Purpose-built machine workshop constructed with <b>industrial solid materials</b> — steel frames, reinforced concrete workbays, high-torque tools, and heavy diagnostic bays. Fully manned by certified mechanics to service adventure motorcycles and off-road 4x4 rigs before, during, and after mountain trails.
+              Comprehensive service bays, mechanical tools, and maintenance support for adventure motorcycles and off-road 4x4 vehicles before and after trail rides.
             </p>
 
             {/* Solid Materials & Machine Stalls Specs */}
@@ -408,7 +498,7 @@ export default function Home() {
                 <ShieldCheck size={22} color="#c47c43" />
                 <div>
                   <b>Mechanics on Active Duty</b>
-                  <span>Certified off-road technicians on standby for engine tuning, trail repairs, and tire balancing.</span>
+                  <span>Technicians on standby for engine tuning, trail repairs, and tire balancing.</span>
                 </div>
               </div>
               <div className="workshop-spec-item">
@@ -421,20 +511,20 @@ export default function Home() {
             </div>
 
             <div style={{ marginTop: 24 }}>
-              <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
-                Book Workshop Session <ArrowRight size={16} />
+              <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20Workshop%20Session." target="_blank" rel="noopener noreferrer">
+                Book Workshop <ArrowRight size={16} />
               </a>
             </div>
           </div>
 
           <div
             className="workshop-visual"
-            onClick={() => setActiveLightboxImage({ src: '/images/parinda-workshop-real.jpg', title: 'Parinda Workshop - Certified Mechanics & Machine Care Stalls', category: 'Workshop' })}
+            onClick={() => setActiveLightboxImage({ src: '/images/parinda-workshop-real.jpg', title: 'Parinda Workshop - Mechanics & Machine Care Stalls', category: 'Workshop' })}
             style={{ cursor: 'pointer' }}
           >
-            <img src="/images/parinda-workshop-real.jpg" alt="Parinda Workshop - Certified Mechanics, Machine Stalls & Pro Tools" />
+            <img src="/images/parinda-workshop-real.jpg" alt="Parinda Workshop - Mechanics, Machine Stalls & Pro Tools" />
             <div className="workshop-tag-badge">
-              <span>PRO TOOLS • CERTIFIED MECHANICS ON-SITE</span>
+              <span>PRO TOOLS • MECHANICS ON-SITE</span>
             </div>
           </div>
         </div>
@@ -453,7 +543,7 @@ export default function Home() {
             >
               <img src="/images/parinda-exp-water-splash.jpg" alt="Parinda Experiences - 4x4 SUV Stream Crossing Splash at Sunset" />
               <div className="image-caption-badge">
-                <span>AUTHENTIC NATURAL WATER CROSSING &amp; ROCKBED</span>
+                <span>WATER CROSSING &amp; ROCKBED</span>
               </div>
             </div>
 
@@ -470,41 +560,41 @@ export default function Home() {
           </div>
 
           <div className="water-crossing-copy">
-            <span className="priority-pill">PARINDA VERTICAL • PARINDA EXPERIENCES</span>
+            <span className="priority-pill">OFF-ROAD TRACK</span>
             <h2>
-              PARINDA EXPERIENCES<br />
-              <span>OFF-ROAD, TRACK &amp; DRIVING EXPERIENCES.</span>
+              OFF-ROAD TRACK.<br />
+              <span>DRIVING &amp; RIDING TRAILS.</span>
             </h2>
             <p className="copy">
-              A genuine mountain stream crossing over authentic river rock beds, natural gravel, and muddy trails. Designed specifically for dual-sport adventure machines and 4x4 vehicles — <b>completely free of artificial swimming pools or resort gimmicks</b>.
+              A genuine mountain stream crossing over authentic pond rock beds, natural gravel, and muddy trails. Designed specifically for dual-sport adventure machines and 4x4 vehicles — <b>completely free of artificial swimming pools or resort gimmicks</b>.
             </p>
 
             <div className="water-crossing-points">
               <div className="wc-point">
                 <Waves size={18} color="#c47c43" />
                 <div>
-                  <b>Authentic River Stones &amp; Mud</b>
-                  <span>Real water depth calibration (450mm–700mm) over river gravel beds.</span>
+                  <b>Pondbed Stones &amp; Mud</b>
+                  <span>Real water depth calibration (450mm–700mm) over pond gravel beds.</span>
                 </div>
               </div>
               <div className="wc-point">
                 <Trees size={18} color="#c47c43" />
                 <div>
-                  <b>80% Bamboo &amp; Timber Build</b>
-                  <span>Decks, bridges, and perimeter markers built with natural bamboo and local wood.</span>
+                  <b>Sustainable Timber Build</b>
+                  <span>Decks, bridges, and perimeter markers built with sustainable timber and local wood.</span>
                 </div>
               </div>
               <div className="wc-point">
                 <ShieldCheck size={18} color="#c47c43" />
                 <div>
-                  <b>4x4 (1:4) Standby Winch Recovery</b>
+                  <b>4x4 Standby Winch Recovery</b>
                   <span>Dedicated 4x4 recovery equipment on active standby for all off-road vehicles.</span>
                 </div>
               </div>
             </div>
 
-            <a className="btn ghost" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
-              Book Experience Pass <ChevronRight size={16} />
+            <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20the%20Off-Road%20Track." target="_blank" rel="noopener noreferrer">
+              Book Off-Road Track <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -563,8 +653,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
-                  Book Day Pass on WhatsApp <ArrowRight size={14} />
+                <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20Day%20Pass." target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
+                  Book Day Pass <ArrowRight size={14} />
                 </a>
               </div>
 
@@ -597,8 +687,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
-                  Book 24-Hour Pass on WhatsApp <ArrowRight size={14} />
+                <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%2024-Hour%20Pass." target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
+                  Book 24-Hour Pass <ArrowRight size={14} />
                 </a>
               </div>
             </div>
@@ -631,8 +721,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <a className="btn ghost" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
-                  Reserve Tent on WhatsApp <ArrowRight size={14} />
+                <a className="btn ghost" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20reserve%20a%20Tent%20Stay." target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
+                  Reserve Tent <ArrowRight size={14} />
                 </a>
               </div>
 
@@ -655,8 +745,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <a className="btn ghost" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
-                  Reserve BYOT on WhatsApp <ArrowRight size={14} />
+                <a className="btn ghost" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20reserve%20a%20Bring-Your-Own-Tent%20pitch." target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
+                  Reserve BYOT <ArrowRight size={14} />
                 </a>
               </div>
             </div>
@@ -665,18 +755,18 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          PARINDA VERTICAL: PARINDA STORE (MERCHANDISE & ADVENTURE GEAR)
+          PARINDA VERTICAL: PARINDA RECEPTION (WELCOME LOUNGE, BRIEFING & GEAR STORE)
           ========================================================================= */}
-      <section className="section dark" id="store">
+      <section className="section dark" id="reception">
         <div className="reception-banner">
           <div className="reception-copy">
-            <span className="priority-pill">PARINDA VERTICAL • PARINDA STORE</span>
+            <span className="priority-pill">PARINDA RECEPTION</span>
             <h2>
-              PARINDA STORE<br />
-              <span>MERCHANDISE &amp; ADVENTURE GEAR.</span>
+              PARINDA RECEPTION<br />
+              <span>WELCOME LOUNGE, BRIEFING &amp; GEAR STORE.</span>
             </h2>
             <p className="copy">
-              Welcome lounge equipped with track briefing screens and an open gear closet featuring a full-length dressing mirror in front — showcasing adventure jackets, gloves, and helmets ready for fitting and purchase.
+              Sanctuary welcome lounge and briefing hub equipped with track safety screens and an open gear closet featuring a full-length dressing mirror in front — showcasing adventure jackets, gloves, and helmets ready for fitting and checkout.
             </p>
 
             <div className="gear-items-grid">
@@ -740,7 +830,7 @@ export default function Home() {
 
           {/* Right: 50% Copy & Specifications */}
           <div className="water-crossing-copy">
-            <span className="priority-pill">PARINDA VERTICAL • NESLING KIDS PARK</span>
+            <span className="priority-pill">NESLING KIDS PARK</span>
             <h2>
               NESLING.<br />
               <span>KIDS PARK.</span>
@@ -789,14 +879,14 @@ export default function Home() {
           <div className="story-sticky-photo">
             <img
               src="/images/ayush-raj-founder.jpg"
-              alt="Ayush Raj - Founder, Parinda Motorworks"
+              alt="Ayush Raj - Founder, Parinda"
             />
             <div className="story-photo-footer">
               <div>
                 <b>AYUSH RAJ</b>
                 <span style={{ display: 'block', marginTop: 2 }}>FOUNDER &amp; RIDER</span>
               </div>
-              <span>PARINDA MOTORWORKS</span>
+              <span>PARINDA</span>
             </div>
           </div>
 
@@ -876,7 +966,7 @@ export default function Home() {
               </p>
 
               <p style={{ color: 'var(--accent-light)', fontWeight: 600, fontStyle: 'italic', paddingLeft: 12, borderLeft: '2px solid var(--accent)' }}>
-                &ldquo;a place built around the complete experience of adventure mobility.&rdquo;
+                &ldquo;A place built around the complete experience of adventure mobility.&rdquo;
               </p>
 
               <p style={{ color: '#fff', fontWeight: 600 }}>
@@ -884,6 +974,188 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          VISION & MISSION SECTION (STRATEGIC OUTLOOK & COMMUNITY IMPACT)
+          ========================================================================= */}
+      <section className="section vision-mission-section" id="vision-mission" style={{ background: 'linear-gradient(180deg, var(--bg-surface) 0%, var(--bg) 100%)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '70px 24px' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div className="section-head" style={{ marginBottom: 36, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <span className="priority-pill" style={{ marginBottom: 12 }}>
+              <Sparkles size={13} /> PURPOSE-DRIVEN ADVENTURE MOBILITY
+            </span>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.5px', margin: '0 0 12px' }}>
+              OUR VISION &amp; <span style={{ color: 'var(--accent-light)' }}>MISSION</span>
+            </h2>
+            <p className="copy" style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+              Building India&apos;s foremost adventure mobility destination while empowering local youth and preserving indigenous heritage.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24, alignItems: 'stretch' }}>
+            {/* 1. VISION CARD */}
+            <div style={{
+              background: 'radial-gradient(circle at top left, rgba(196, 124, 67, 0.12), transparent 70%), var(--card-bg)',
+              border: '1px solid rgba(196, 124, 67, 0.35)',
+              borderRadius: 16,
+              padding: '32px 28px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 12px 32px rgba(0,0,0,0.35)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div>
+                <span className="priority-pill" style={{ marginBottom: 14 }}>STRATEGIC OUTLOOK</span>
+                <h3 style={{ fontSize: 24, fontWeight: 800, color: '#fff', margin: '8px 0 18px', letterSpacing: 0.5 }}>
+                  OUR VISION
+                </h3>
+                <div style={{
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderLeft: '4px solid var(--accent)',
+                  padding: '20px 22px',
+                  borderRadius: '0 10px 10px 0',
+                  marginBottom: 20
+                }}>
+                  <p style={{ fontSize: 15.5, lineHeight: 1.8, color: '#ede7dc', margin: 0, fontStyle: 'italic', fontWeight: 400 }}>
+                    &ldquo;We are creating a destination where adventure-oriented customers will physically bring their motorcycles and SUVs, spend several hours, participate in activities and interact with other enthusiasts. We want one automotive brand to become the exclusive SUV partner at Parinda.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 12 }}>
+                <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 20, background: 'rgba(196,124,67,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(196,124,67,0.3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  🏔️ Dedicated Trails &amp; Obstacles
+                </span>
+                <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 20, background: 'rgba(196,124,67,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(196,124,67,0.3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  🤝 Exclusive Brand Co-Creation
+                </span>
+              </div>
+            </div>
+
+            {/* 2. MISSION CARD */}
+            <div style={{
+              background: 'radial-gradient(circle at top right, rgba(196, 124, 67, 0.12), transparent 70%), var(--card-bg)',
+              border: '1px solid rgba(196, 124, 67, 0.35)',
+              borderRadius: 16,
+              padding: '32px 28px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 12px 32px rgba(0,0,0,0.35)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div>
+                <span className="priority-pill" style={{ marginBottom: 14 }}>COMMUNITY &amp; SUSTAINABILITY</span>
+                <h3 style={{ fontSize: 24, fontWeight: 800, color: '#fff', margin: '8px 0 18px', letterSpacing: 0.5 }}>
+                  OUR MISSION
+                </h3>
+                <div style={{
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderLeft: '4px solid var(--accent)',
+                  padding: '20px 22px',
+                  borderRadius: '0 10px 10px 0',
+                  marginBottom: 20
+                }}>
+                  <p style={{ fontSize: 15.5, lineHeight: 1.8, color: '#ede7dc', margin: 0, fontStyle: 'italic', fontWeight: 400 }}>
+                    &ldquo;We are committed to creating employment for local residents, training local youth as guides and tourism professionals, promoting local handicrafts, food, culture, and festivals, and encouraging homestays so tourists can stay with local families and explore Jharkhand&apos;s rich traditions.&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 12 }}>
+                <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 20, background: 'rgba(196,124,67,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(196,124,67,0.3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  🌱 Employment &amp; Youth Training
+                </span>
+                <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 20, background: 'rgba(196,124,67,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(196,124,67,0.3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  🏡 Homestays &amp; Cultural Heritage
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          COMMUNITY REVIEWS & REAL EXPERIENCES (INTERACTIVE FEEDBACK)
+          ========================================================================= */}
+      <section className="reviews-section section" id="reviews">
+        <div className="section-head">
+          <div>
+            <span className="priority-pill">
+              <Star size={13} fill="#e5995e" color="#e5995e" /> COMMUNITY VOICES • 100% REAL REVIEWS
+            </span>
+            <h2>
+              RIDERS &amp; EXPLORERS<br />
+              <span>COMMUNITY REVIEWS.</span>
+            </h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
+            <p className="copy narrow" style={{ margin: 0, textAlign: 'right' }}>
+              Real impressions from riders, off-road drivers, machine builders, and campers at Parinda.
+            </p>
+            <button
+              className="btn primary"
+              onClick={() => setReviewModalOpen(true)}
+              style={{ fontSize: 11, padding: '10px 18px' }}
+            >
+              ★ Write a Review
+            </button>
+          </div>
+        </div>
+
+        {/* Reviews Grid */}
+        <div className="reviews-grid">
+          {reviewsList.map((rev) => (
+            <motion.div
+              key={rev.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="review-card"
+            >
+              <div className="review-card-head">
+                <div className="review-author-info">
+                  <div className="review-avatar-circle">
+                    {rev.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="review-author-details">
+                    <h4>{rev.name}</h4>
+                    <span className="review-role-badge">{rev.role}</span>
+                  </div>
+                </div>
+                <div className="review-stars">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star
+                      key={idx}
+                      size={13}
+                      fill={idx < rev.rating ? '#f6ad55' : 'transparent'}
+                      color={idx < rev.rating ? '#f6ad55' : '#4a5568'}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="review-body">
+                <p>&ldquo;{rev.comment}&rdquo;</p>
+              </div>
+
+              <div className="review-card-footer">
+                <div className="review-vehicle-pill">
+                  {rev.vehicle.toLowerCase().includes('thar') || rev.vehicle.toLowerCase().includes('4x4') || rev.vehicle.toLowerCase().includes('suv') ? (
+                    <Car size={12} />
+                  ) : (
+                    <Bike size={12} />
+                  )}
+                  <span>{rev.vehicle}</span>
+                </div>
+                <span>{rev.date} {rev.verified && '• Verified ✓'}</span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -921,7 +1193,7 @@ export default function Home() {
                   <span className="fac-index">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{f.name}</h3>
                 </div>
-                <p>{f.desc}</p>
+                {f.desc ? <p>{f.desc}</p> : null}
               </div>
             </div>
           ))}
@@ -941,7 +1213,7 @@ export default function Home() {
             </h2>
           </div>
           <p className="copy narrow">
-            Authentic photographs and architectural visualisations from the Parinda Motorworks sanctuary.
+            Authentic photographs and architectural visualisations from the Parinda sanctuary.
           </p>
         </div>
 
@@ -989,14 +1261,14 @@ export default function Home() {
       <section className="section" id="caravan">
         <div className="section-head">
           <div>
-            <span className="priority-pill">PARINDA VERTICAL • PARINDA CARAVAN</span>
+            <span className="priority-pill">PARINDA CARAVAN</span>
             <h2>
               PARINDA CARAVAN<br />
               <span>MOTORCYCLE EXPEDITIONS &amp; COMMUNITY.</span>
             </h2>
           </div>
           <p className="copy narrow">
-            Group rides, cross-country overland expeditions, rider gatherings, trail clinics, and off-road community convoys.
+            Group rides, cross-country overland expeditions, rider gatherings, skill sessions, and off-road community convoys.
           </p>
         </div>
 
@@ -1018,7 +1290,7 @@ export default function Home() {
           <div className="community-card">
             <Compass size={28} color="var(--accent)" />
             <div>
-              <b>RIDING CLINICS</b>
+              <b>RIDING SKILL SESSIONS</b>
               <span>Off-road riding skills, terrain navigation, and sand/rock mastery</span>
             </div>
           </div>
@@ -1033,19 +1305,19 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          PARINDA VERTICAL: PARINDA EVENTS (CORPORATE, OEM & BRAND EXPERIENCES)
+          PARINDA VERTICAL: PARINDA EVENTS (CORPORATE & BRAND MEETS)
           ========================================================================= */}
       <section className="section dark" id="events">
         <div className="section-head">
           <div>
-            <span className="priority-pill">PARINDA VERTICAL • PARINDA EVENTS</span>
+            <span className="priority-pill">PARINDA EVENTS</span>
             <h2>
               PARINDA EVENTS<br />
-              <span>CORPORATE, OEM &amp; BRAND EXPERIENCES.</span>
+              <span>CORPORATE &amp; BRAND MEETS.</span>
             </h2>
           </div>
           <p className="copy narrow">
-            A real-world forest arena for automotive brand reveals, media test drives, OEM machine demonstrations, and corporate retreats.
+            A real-world forest arena for automotive brand reveals, media test drives, machine demonstrations, and corporate retreats.
           </p>
         </div>
 
@@ -1060,7 +1332,7 @@ export default function Home() {
           <div className="community-card">
             <ShieldCheck size={28} color="var(--accent)" />
             <div>
-              <b>OEM TRACK TESTING</b>
+              <b>VEHICLE TRACK TESTING</b>
               <span>Technical proving grounds for production off-road motorcycles &amp; 4x4s</span>
             </div>
           </div>
@@ -1075,20 +1347,20 @@ export default function Home() {
             <Target size={28} color="var(--accent)" />
             <div>
               <b>MEDIA &amp; CONTENT DRIVES</b>
-              <span>Cinematic forest backdrops, obstacle courses, and natural water stream crossings</span>
+              <span>Cinematic forest backdrops, obstacle courses, and water stream crossings</span>
             </div>
           </div>
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 40 }}>
-          <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
-            Join WhatsApp Community / Book Passes <ArrowRight size={16} />
+          <a className="btn primary" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20inquire%20about%20booking%20an%20Event." target="_blank" rel="noopener noreferrer">
+            Book Event via WhatsApp <ArrowRight size={16} />
           </a>
         </div>
       </section>
 
       {/* =========================================================================
-          SAFETY & STANDBY RECOVERY (4x4 1:4 STANDBY + ONSITE FIRST AID KIT)
+          SAFETY & STANDBY RECOVERY (STANDBY WINCH + ONSITE FIRST AID KIT)
           ========================================================================= */}
       <section className="safety section dark">
         <p className="eyebrow">STANDBY RECOVERY &amp; SAFETY PROTOCOLS</p>
@@ -1105,54 +1377,31 @@ export default function Home() {
           <div>
             <Compass size={32} />
             <h3>4x4 Standby Recovery</h3>
-            <p>Dedicated 4x4 (1:4) heavy-duty winch and mechanical recovery equipment on active standby across all tracks.</p>
+            <p>Dedicated 4x4 heavy-duty winch and mechanical recovery support on active standby across all tracks.</p>
           </div>
           <div>
             <Sparkles size={32} />
-            <h3>Onsite First Aid Kit</h3>
-            <p>On-site dedicated safety equipment, emergency first aid kit and trained responders on standby.</p>
+            <h3>On-Site Dedicated First Aid Kit</h3>
+            <p>On-site dedicated first aid equipment on standby.</p>
           </div>
         </div>
       </section>
 
-      {/* CTA / CONTACT */}
+      {/* CTA / WHATSAPP COMMUNITY */}
       <section className="cta" id="contact">
         <div className="cta-content">
-          <p className="eyebrow">PARINDA MOTORWORKS • ADVENTURE COMMUNITY EXPERIENCE</p>
+          <p className="eyebrow">PARINDA • ADVENTURE MOBILITY EXPERIENCE CENTER</p>
           <h2>
-            READY FOR<br />
-            <em>THE ADVENTURE?</em>
+            JOIN THE<br />
+            <em>WHATSAPP COMMUNITY</em>
           </h2>
           <p>
-            Connect directly with us for off-road experience days, machine prep sessions, camping under the stars, training clinics, or brand launch bookings.
+            Connect directly with fellow riders, off-road enthusiasts, and machine builders. Stay updated on trail status, weekend meetups, and exclusive community expeditions.
           </p>
 
-          {/* Contact Direct Cards */}
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', margin: '24px 0 10px' }}>
-            <a
-              href="tel:+919934906882"
-              className="btn ghost"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 13 }}
-            >
-              <Phone size={16} color="var(--accent-light)" />
-              <span><b>Phone:</b> +91 9934906882</span>
-            </a>
-            <a
-              href="mailto:a.rrajayush2@gmail.com"
-              className="btn ghost"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 13 }}
-            >
-              <Mail size={16} color="var(--accent-light)" />
-              <span><b>Email:</b> a.rrajayush2@gmail.com</span>
-            </a>
-          </div>
-
-          <div className="actions" style={{ marginTop: 20 }}>
-            <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer">
-              Join WhatsApp Community &amp; Book <ArrowRight size={16} />
-            </a>
-            <a className="btn ghost" href="tel:+919934906882">
-              <Phone size={15} /> Call Ayush Raj Direct
+          <div className="actions" style={{ marginTop: 24, justifyContent: 'center' }}>
+            <a className="btn primary" href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0" target="_blank" rel="noopener noreferrer" style={{ padding: '14px 28px', fontSize: 14 }}>
+              💬 Join WhatsApp Community <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -1168,7 +1417,7 @@ export default function Home() {
           </p>
           <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12, color: 'var(--muted)' }}>
             <span>📞 <b>Phone:</b> <a href="tel:+919934906882" style={{ color: 'var(--accent-light)' }}>+91 9934906882</a></span>
-            <span>✉️ <b>Email:</b> <a href="mailto:a.rrajayush2@gmail.com" style={{ color: 'var(--accent-light)' }}>a.rrajayush2@gmail.com</a></span>
+            <span>✉️ <b>Email:</b> <a href="mailto:parindamotorworks@gmail.com" style={{ color: 'var(--accent-light)' }}>parindamotorworks@gmail.com</a></span>
           </div>
         </div>
 
@@ -1176,11 +1425,14 @@ export default function Home() {
           <a href="/packages">Passes &amp; Packages</a>
           <a href="#caravan">Parinda Caravan</a>
           <a href="#workshop">Parinda Workshop</a>
-          <a href="#experiences">Parinda Experiences</a>
-          <a href="#camp">Parinda Camp</a>
-          <a href="#store">Parinda Store</a>
+          <a href="#experiences">Off-Road Track</a>
+          <a href="#camp">Parinda Base</a>
+          <a href="#reviews">Community Reviews</a>
+          <a href="#gallery">Visual Documentation</a>
+          <a href="#reception">Parinda Reception</a>
           <a href="#events">Parinda Events</a>
           <a href="#about">Our Story &amp; Founder</a>
+          <a href="#vision-mission">Vision &amp; Mission</a>
         </div>
 
         <div className="social">
@@ -1195,8 +1447,132 @@ export default function Home() {
           </a>
         </div>
 
-        <small>© 2026 Parinda Motorworks. All Rights Reserved. Adventure Mobility Experience Center.</small>
+        <small>© 2026 Parinda. All Rights Reserved. Adventure Mobility Experience Center.</small>
       </footer>
+
+      {/* WRITE A REVIEW MODAL */}
+      <AnimatePresence>
+        {reviewModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lightbox"
+            onClick={() => setReviewModalOpen(false)}
+          >
+            <div className="review-modal-card" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="lightbox-close"
+                onClick={() => setReviewModalOpen(false)}
+              >
+                <X size={18} /> Close
+              </button>
+
+              <div style={{ marginBottom: 18 }}>
+                <span className="priority-pill">COMMUNITY VOICES</span>
+                <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: 26, margin: '6px 0 0', textTransform: 'uppercase' }}>
+                  Share Your Parinda Experience
+                </h3>
+                <p style={{ fontSize: 13, color: 'var(--muted)', margin: '4px 0 0' }}>
+                  Your feedback helps fellow riders and off-road explorers prepare for the trail.
+                </p>
+              </div>
+
+              {reviewSubmitSuccess ? (
+                <div style={{ padding: '30px 20px', textAlign: 'center', background: 'rgba(104, 211, 145, 0.1)', border: '1px solid #68d391', borderRadius: 8 }}>
+                  <CheckCircle2 size={40} color="#68d391" style={{ margin: '0 auto 12px' }} />
+                  <h4 style={{ fontSize: 20, color: '#fff', margin: 0 }}>Thank You for Your Review!</h4>
+                  <p style={{ fontSize: 13, color: '#a0aec0', marginTop: 6 }}>Your experience has been posted to the community feed.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  <div>
+                    <label style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--accent-light)', display: 'block', marginBottom: 4 }}>
+                      Your Rating
+                    </label>
+                    <div className="star-rating-picker">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          className="star-btn"
+                          onClick={() => setNewReviewRating(star)}
+                        >
+                          <Star
+                            size={24}
+                            fill={star <= newReviewRating ? '#f6ad55' : 'transparent'}
+                            color={star <= newReviewRating ? '#f6ad55' : '#4a5568'}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="form-group-row">
+                    <div className="form-field">
+                      <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Full Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Rahul Sharma"
+                        value={newReviewName}
+                        onChange={(e) => setNewReviewName(e.target.value)}
+                        style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                      />
+                    </div>
+                    <div className="form-field">
+                      <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Machine / Vehicle</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Himalayan 450 / Thar 4x4"
+                        value={newReviewVehicle}
+                        onChange={(e) => setNewReviewVehicle(e.target.value)}
+                        style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field">
+                    <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Experience / Role</label>
+                    <select
+                      value={newReviewRole}
+                      onChange={(e) => setNewReviewRole(e.target.value)}
+                      style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                    >
+                      <option value="Adventure Rider">Adventure Rider</option>
+                      <option value="4x4 SUV Explorer">4x4 SUV Explorer</option>
+                      <option value="Overnight Camper">Overnight Camper</option>
+                      <option value="The Nest Café Guest">The Nest Café Guest</option>
+                      <option value="Machine Builder / Mechanic">Machine Builder / Mechanic</option>
+                      <option value="Family & Weekend Visitor">Family &amp; Weekend Visitor</option>
+                    </select>
+                  </div>
+
+                  <div className="form-field">
+                    <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Review &amp; Experience Details</label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Share what you liked about the track, camping, hospitality, or amenities..."
+                      value={newReviewComment}
+                      onChange={(e) => setNewReviewComment(e.target.value)}
+                      style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4, resize: 'vertical' }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn primary"
+                    style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}
+                  >
+                    Submit Review <Send size={15} />
+                  </button>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* LIGHTBOX MODAL */}
       <AnimatePresence>
@@ -1228,18 +1604,25 @@ export default function Home() {
       {/* MOBILE STICKY QUICK ACTION BAR */}
       <div className="mobile-sticky-bar">
         <a
-          href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0"
+          href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass."
           target="_blank"
           rel="noopener noreferrer"
-          className="bar-btn primary"
+          className="mobile-sticky-btn primary"
         >
-          <MessageCircle size={16} /> WhatsApp Book
+          <Ticket size={16} /> Book Pass
+        </a>
+        <a
+          href="/packages"
+          className="bar-btn secondary"
+        >
+          <Ticket size={14} color="#e5995e" /> Passes &amp; Book
         </a>
         <a
           href="tel:+919934906882"
-          className="bar-btn secondary"
+          className="bar-btn call-btn"
+          aria-label="Call Direct Support"
         >
-          <Phone size={15} color="#c47c43" /> Call Support
+          <Phone size={15} />
         </a>
       </div>
     </main>

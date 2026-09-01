@@ -21,7 +21,8 @@ import {
   MapPin,
   Flame,
   Wrench,
-  Check
+  Check,
+  Phone
 } from 'lucide-react';
 import { ParindaLogo } from '../../components/ParindaLogo';
 import { bookingPackages, PassPackage } from '../../data/site';
@@ -55,7 +56,7 @@ export default function PackagesPage() {
     <main className="packages-page">
       {/* Top Navbar */}
       <header className="nav">
-        <a href="/" className="brand" aria-label="Parinda Motorworks Home">
+        <a href="/" className="brand" aria-label="Parinda Home">
           <ParindaLogo size="sm" showSubtitle={true} />
         </a>
 
@@ -265,8 +266,8 @@ export default function PackagesPage() {
                       onChange={(e) => setTentAddon(e.target.checked)}
                     />
                     <div>
-                      <b>Pre-Pitched Alpine Tent &amp; Bedding (+₹500)</b>
-                      <span>Ready set-up tent right in your designated bay.</span>
+                      <b>Rent a Tent (Do-It-Yourself Pitching) (+₹500)</b>
+                      <span>High-grade waterproof tent provided for self-pitching in your bay.</span>
                     </div>
                   </label>
                   <label className={`addon-item ${bonfireAddon ? 'checked' : ''}`}>
@@ -317,7 +318,7 @@ export default function PackagesPage() {
               </div>
               {tentAddon && (
                 <div className="breakdown-row">
-                  <span>Pre-Pitched Alpine Tent &amp; Bedding</span>
+                  <span>Rent a Tent (Do-It-Yourself Pitching)</span>
                   <b>₹500</b>
                 </div>
               )}
@@ -347,7 +348,7 @@ export default function PackagesPage() {
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
-                <span>Access to 3 private toilets &amp; 3 hot showers</span>
+                <span>Access to clean private washrooms &amp; hot showers</span>
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
@@ -355,7 +356,7 @@ export default function PackagesPage() {
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
-                <span>4x4 (1:4) standby safety recovery crew on duty</span>
+                <span>Dedicated 4x4 standby safety recovery crew on duty</span>
               </div>
             </div>
 
@@ -435,13 +436,21 @@ export default function PackagesPage() {
 
               <div className="ticket-footer">
                 <a
-                  href="https://chat.whatsapp.com/Kp92NUbFsA8Cwa6ajFrpEm?s=cl&p=a&ilr=0"
+                  href={`https://wa.me/919934906882?text=${encodeURIComponent(`Hello Parinda! I want to confirm my booking:
+- Pass: ${selectedPass.title} (${selectedPass.price})
+- Ref: ${bookingRef}
+- Guests: ${guestsCount}
+- Machine: ${vehicleType.toUpperCase()}
+- Date: ${selectedDate}
+- Total: ₹${totalPrice.toLocaleString()}
+- Name: ${fullName || 'Guest'}
+- Phone: ${phone || 'N/A'}`)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn primary"
                   style={{ width: '100%', justifyContent: 'center' }}
                 >
-                  Confirm on WhatsApp Community <Share2 size={15} />
+                  Send Booking on WhatsApp <Share2 size={15} />
                 </a>
               </div>
             </motion.div>
@@ -459,21 +468,47 @@ export default function PackagesPage() {
           </p>
           <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12, color: 'var(--muted)' }}>
             <span>📞 <b>Phone:</b> <a href="tel:+919934906882" style={{ color: 'var(--accent-light)' }}>+91 9934906882</a></span>
-            <span>✉️ <b>Email:</b> <a href="mailto:a.rrajayush2@gmail.com" style={{ color: 'var(--accent-light)' }}>a.rrajayush2@gmail.com</a></span>
+            <span>✉️ <b>Email:</b> <a href="mailto:parindamotorworks@gmail.com" style={{ color: 'var(--accent-light)' }}>parindamotorworks@gmail.com</a></span>
           </div>
         </div>
 
         <div className="footer-links">
           <a href="/">Home</a>
           <a href="/packages">Passes &amp; Packages</a>
-          <a href="/#camping">Camping</a>
+          <a href="/#camp">Parinda Base</a>
           <a href="/#the-nest">The Nest Café</a>
           <a href="/#workshop">Workshop</a>
-          <a href="/#water-crossing">Water Crossing</a>
+          <a href="/#about">Our Story &amp; Founder</a>
+          <a href="/#vision-mission">Vision &amp; Mission</a>
         </div>
 
-        <small>© 2026 Parinda Motorworks. All Rights Reserved.</small>
+        <small>© 2026 Parinda. All Rights Reserved. Adventure Mobility Experience Center.</small>
       </footer>
+
+      {/* MOBILE STICKY QUICK ACTION BAR */}
+      <div className="mobile-sticky-bar">
+        <a
+          href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bar-btn primary"
+        >
+          <Share2 size={15} /> Book Pass
+        </a>
+        <a
+          href="#booking-form-section"
+          className="bar-btn secondary"
+        >
+          Customize Pass (₹{totalPrice.toLocaleString()})
+        </a>
+        <a
+          href="tel:+919934906882"
+          className="bar-btn call-btn"
+          aria-label="Call Direct Support"
+        >
+          <Phone size={15} />
+        </a>
+      </div>
     </main>
   );
 }

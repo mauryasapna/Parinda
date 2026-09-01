@@ -74,17 +74,17 @@ export const tourLocations: TourLocation[] = [
     thumbnail: '/images/bike-skill-mound.jpg',
     icon: Sparkles,
     description: 'Technical off-road track area with dirt mounds, balance logs, and vehicle staging bays. Look 360° around the machine preparation stalls.',
-    highlights: ['Mound climbs & obstacle courses', 'Machine staging & inspection stalls', 'Guided coaching & skill clinics']
+    highlights: ['Mound climbs & obstacle courses', 'Machine staging & inspection stalls', 'Guided coaching & skill sessions']
   },
   {
     id: 'water-crossing',
     name: 'Water Crossing',
-    tagline: 'Natural River Stream Track',
+    tagline: 'Water Stream Track',
     image: '/images/360/water-crossing-360.jpg',
     thumbnail: '/images/parinda-lake-offroad-park.jpg',
     icon: Waves,
-    description: 'Shallow stony river stream crossing over river rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate dynamic water depths with standby winch support.',
-    highlights: ['450mm–700mm calibrated water depth', '80% Bamboo & wood architecture', '4x4 (1:4) standby recovery winch']
+    description: 'Shallow stony stream crossing over rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate dynamic water depths with standby winch support.',
+    highlights: ['450mm–700mm calibrated water depth', 'Sustainable timber & wood architecture', 'Dedicated 4x4 standby recovery winch']
   }
 ];
 

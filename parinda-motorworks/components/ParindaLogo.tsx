@@ -11,14 +11,14 @@ interface ParindaLogoProps {
 export function ParindaLogo({
   size = 'md',
   showSubtitle = false,
-  subtitleText = 'PARINDA MOTORWORKS • ADVENTURE COMMUNITY EXPERIENCE',
+  subtitleText = 'ADVENTURE MOBILITY EXPERIENCE CENTER',
   className = ''
 }: ParindaLogoProps) {
   const isSm = size === 'sm';
   const isLg = size === 'lg';
   const isHero = size === 'hero';
 
-  const logoHeight = isSm ? 38 : isLg ? 76 : isHero ? 110 : 54;
+  const logoHeight = isSm ? 46 : isLg ? 88 : isHero ? 120 : 62;
 
   return (
     <div
@@ -29,20 +29,22 @@ export function ParindaLogo({
         alignItems: 'flex-start',
         justifyContent: 'center',
         userSelect: 'none',
-        background: 'transparent'
+        background: 'transparent',
+        maxWidth: '100%'
       }}
     >
       <img
         src="/images/parinda-official-logo.png"
         alt="PARINDA - Adventure Mobility Experience Center"
+        className="parinda-brand-logo-img"
         style={{
           height: `${logoHeight}px`,
           width: 'auto',
-          maxWidth: isHero ? '340px' : isLg ? '240px' : isSm ? '150px' : '190px',
+          maxWidth: isHero ? '360px' : isLg ? '280px' : isSm ? '170px' : '220px',
           objectFit: 'contain',
           background: 'transparent',
           mixBlendMode: 'screen',
-          filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6))',
+          filter: 'drop-shadow(0 4px 14px rgba(0, 0, 0, 0.7))',
           transition: 'transform 0.3s ease',
           display: 'block'
         }}
@@ -52,19 +54,19 @@ export function ParindaLogo({
           className="parinda-logo-tagline"
           style={{
             marginTop: '3px',
-            fontSize: isSm ? '8.5px' : '10px',
-            letterSpacing: '1.8px',
+            fontSize: isSm ? '7px' : '8px',
+            letterSpacing: '1.6px',
             textTransform: 'uppercase',
             fontWeight: 700,
-            whiteSpace: 'nowrap',
             color: 'var(--accent-light, #e5995e)',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '4px',
+            lineHeight: 1.1
           }}
         >
-          <span style={{ width: '12px', height: '2px', background: 'var(--accent, #c47c43)', display: 'inline-block' }} />
-          {subtitleText}
+          <span style={{ width: '8px', height: '1.5px', background: 'var(--accent, #c47c43)', display: 'inline-block', flexShrink: 0 }} />
+          <span className="tagline-text">{subtitleText}</span>
         </span>
       )}
     </div>
