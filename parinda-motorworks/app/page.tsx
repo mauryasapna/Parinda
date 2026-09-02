@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowDownRight,
@@ -208,6 +209,160 @@ export default function Home() {
 
         <div className="scroll">
           SCROLL TO EXPLORE <ArrowDownRight size={14} />
+        </div>
+      </section>
+
+      {/* =========================================================================
+          EXPLORE PARINDA IN 360° (INTERACTIVE LOCATION CARDS)
+          ========================================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#090b0e] relative z-10" id="360-showcase">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c47c43]/15 border border-[#e5995e]/30 mb-4">
+              <Compass className="w-3.5 h-3.5 text-[#e5995e] animate-spin" style={{ animationDuration: '8s' }} />
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#e5995e]">
+                3D VIRTUAL TOUR
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+              EXPLORE PARINDA IN 360°
+            </h2>
+            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+              Step directly inside our 3D spherical panoramas. Every location has been mapped on the interior of a virtual sphere with authentic soundscapes and interactive hotspots.
+            </p>
+          </div>
+
+          {/* 6 Location Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                id: 'reception',
+                title: 'RECEPTION',
+                name: 'Parinda Reception',
+                desc: 'Premium Parinda reception and lounge with wooden interiors, black leather seating, reception desk, large glass windows, greenery and mountain views, connected to the service bay.',
+                image: '/panoramas/reception-360.jpg',
+                badge: 'Welcome Hub'
+              },
+              {
+                id: 'workshop',
+                title: 'WORKSHOP',
+                name: 'Parinda Workshop',
+                desc: 'Professional motorcycle workshop with motorcycles, mechanics, tools, service equipment, welding area and industrial wooden/stone interior.',
+                image: '/panoramas/workshop-360.jpg',
+                badge: 'Custom Engineering'
+              },
+              {
+                id: 'camping',
+                title: 'CAMPING',
+                name: 'Parinda Camping',
+                desc: 'Night camping experience with colorful tents, campfire circle, motorcycles, mountain valley, stars, moon and warm campsite lighting.',
+                image: '/panoramas/camping-360.jpg',
+                badge: 'Milky Way Glamping'
+              },
+              {
+                id: 'water-crossing',
+                title: 'WATER CROSSING',
+                name: 'Parinda Water Crossing',
+                desc: 'Adventure water-crossing arena where a Jeep/SUV drives through a rocky shallow water track surrounded by nature.',
+                image: '/panoramas/water-crossing-360.jpg',
+                badge: 'Riverbed Challenge'
+              },
+              {
+                id: 'nest-cafe',
+                title: 'NEST CAFE',
+                name: 'Parinda Nest / Cafe',
+                desc: 'Scenic outdoor cafe surrounded by nature with seating, warm lighting, mountain/forest views and a premium adventure-resort atmosphere.',
+                image: '/panoramas/nest-cafe-360.jpg',
+                badge: 'Sunset Terrace'
+              },
+              {
+                id: 'offroad',
+                title: 'OFF-ROAD ARENA',
+                name: 'Parinda Off-Road Arena',
+                desc: 'Adventure off-road track with bikes, cars, rocks, dirt terrain, obstacles and natural surroundings.',
+                image: '/panoramas/offroad-360.jpg',
+                badge: 'Proving Grounds'
+              }
+            ].map((card) => (
+              <div
+                key={card.id}
+                className="group relative rounded-2xl bg-[#111419] border border-white/10 hover:border-[#e5995e]/60 overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(196,124,67,0.25)] transition-all duration-300 flex flex-col justify-between"
+              >
+                {/* Image & Overlay */}
+                <div className="relative h-56 w-full overflow-hidden bg-neutral-900">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 group-hover:brightness-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111419] via-transparent to-black/30" />
+
+                  {/* 360 Badge */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 border border-white/15 backdrop-blur-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#e5995e] animate-ping" />
+                    <span className="text-[10px] font-bold text-white tracking-widest font-mono">
+                      360°
+                    </span>
+                  </div>
+
+                  {/* Category Pill */}
+                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#c47c43]/80 text-black text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">
+                    {card.badge}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e5995e]">
+                      {card.title}
+                    </span>
+                    <h3 className="text-xl font-bold text-white tracking-wide mt-1 mb-2.5">
+                      {card.name}
+                    </h3>
+                    <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3 mb-6">
+                      {card.desc}
+                    </p>
+                  </div>
+
+                  {/* Enter 360 Button */}
+                  <Link
+                    href={`/360?loc=${card.id}`}
+                    className="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-[#e5995e] border border-white/10 hover:border-[#e5995e] text-white hover:text-black text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 group/btn shadow-sm"
+                  >
+                    <Compass className="w-4 h-4 text-[#e5995e] group-hover/btn:text-black transition-colors" />
+                    <span>ENTER 360°</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover/btn:text-black group-hover/btn:translate-x-1 transition-all" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Quick Launch Banner */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#141820] to-[#101217] border border-[#e5995e]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#e5995e]/20 border border-[#e5995e]/40 flex items-center justify-center text-[#e5995e] flex-shrink-0">
+                <Compass className="w-6 h-6 animate-pulse" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase tracking-wider">
+                  Full Spherical Destination Tour
+                </h4>
+                <p className="text-xs text-neutral-400">
+                  Switch between all six locations seamlessly without leaving the 360° viewport.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/360"
+              className="px-6 py-2.5 rounded-xl bg-[#e5995e] text-black font-bold text-xs uppercase tracking-wider hover:bg-[#c47c43] transition-colors flex items-center gap-2 flex-shrink-0"
+            >
+              <span>Launch Virtual Hub</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       </section>
 
