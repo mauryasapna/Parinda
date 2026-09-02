@@ -35,7 +35,12 @@ import {
   MessageCircle,
   Star,
   Send,
-  Check
+  Check,
+  Clock,
+  Award,
+  Scale,
+  TrendingUp,
+  HeartHandshake
 } from 'lucide-react';
 import { ParindaLogo } from '../components/ParindaLogo';
 import {
@@ -1232,6 +1237,272 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          CORE VALUES & DAILY OPERATIONAL READINESS TIMELINE
+          ========================================================================= */}
+      <section className="section core-values-operations-section" id="operations" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '75px 24px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          
+          {/* Section Header */}
+          <div className="section-head" style={{ marginBottom: 44, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <span className="priority-pill" style={{ marginBottom: 12 }}>
+              <ShieldCheck size={13} /> OPERATIONAL EXCELLENCE &amp; INTEGRITY
+            </span>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.5px', margin: '0 0 12px' }}>
+              OUR VALUES &amp; <span style={{ color: 'var(--accent-light)' }}>DAILY READINESS</span>
+            </h2>
+            <p className="copy" style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+              The non-negotiable standards, ethical principles, and strict operating timeline that ensure world-class safety and memorable guest hospitality every single day.
+            </p>
+          </div>
+
+          {/* 2-Column Responsive Grid: Core Values & Daily Schedule */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 32, alignItems: 'stretch' }}>
+            
+            {/* COLUMN 1: CORE VALUES */}
+            <div style={{
+              background: 'radial-gradient(circle at top left, rgba(196, 124, 67, 0.1), transparent 60%), var(--card-bg)',
+              border: '1px solid rgba(196, 124, 67, 0.3)',
+              borderRadius: 20,
+              padding: '32px 26px',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 16px 36px rgba(0,0,0,0.4)',
+              position: 'relative'
+            }}>
+              {/* Header */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                <div>
+                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '2px', color: 'var(--accent-light)', textTransform: 'uppercase' }}>
+                    ETHICAL PILLARS
+                  </span>
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: '#fff', margin: '4px 0 0' }}>
+                    CORE VALUES
+                  </h3>
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 12, background: 'rgba(229, 153, 94, 0.15)', color: 'var(--accent-light)', border: '1px solid rgba(229, 153, 94, 0.3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  STATUS • DRAFT
+                </span>
+              </div>
+
+              {/* 6 Core Values List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1, justifyContent: 'space-between' }}>
+                
+                {/* 1. Safety First */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Safety First</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Non-negotiable priority across all tracks and facilities.</p>
+                  </div>
+                </div>
+
+                {/* 2. Customer Experience */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <HeartHandshake size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Customer Experience</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Memorable service, authentic hospitality, and personalized care.</p>
+                  </div>
+                </div>
+
+                {/* 3. Professionalism */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <Award size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Professionalism</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Adherence to international industry standards and certified practices.</p>
+                  </div>
+                </div>
+
+                {/* 4. Respect for Nature */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <Trees size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Respect for Nature</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Eco-friendly mindset, zero litter policy, and forest preservation.</p>
+                  </div>
+                </div>
+
+                {/* 5. Honest Business Practices */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <Scale size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Honest Business Practices</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Integrity, transparent pricing, and fair community partnerships.</p>
+                  </div>
+                </div>
+
+                {/* 6. Continuous Improvement */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(196, 124, 67, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-light)', flexShrink: 0 }}>
+                    <TrendingUp size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 2px' }}>Continuous Improvement</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Daily growth, skill refinement, and proactive guest feedback integration.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* COLUMN 2: DAILY SCHEDULE & READINESS TIMELINE */}
+            <div style={{
+              background: 'radial-gradient(circle at top right, rgba(196, 124, 67, 0.1), transparent 60%), var(--card-bg)',
+              border: '1px solid rgba(196, 124, 67, 0.3)',
+              borderRadius: 20,
+              padding: '32px 26px',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 16px 36px rgba(0,0,0,0.4)',
+              position: 'relative'
+            }}>
+              {/* Header */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                <div>
+                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '2px', color: 'var(--accent-light)', textTransform: 'uppercase' }}>
+                    OPERATIONS PROTOCOL
+                  </span>
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: '#fff', margin: '4px 0 0' }}>
+                    DAILY SCHEDULE &amp; READINESS
+                  </h3>
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 12, background: 'rgba(229, 153, 94, 0.15)', color: 'var(--accent-light)', border: '1px solid rgba(229, 153, 94, 0.3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  VERSION 1.0
+                </span>
+              </div>
+
+              {/* Timeline Container with vertical bar */}
+              <div style={{ position: 'relative', paddingLeft: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                {/* Vertical connecting line */}
+                <div style={{
+                  position: 'absolute',
+                  left: 7,
+                  top: 14,
+                  bottom: 14,
+                  width: 2,
+                  background: 'linear-gradient(180deg, var(--accent) 0%, rgba(196, 124, 67, 0.2) 100%)'
+                }} />
+
+                {/* Step 1: 07:00 AM */}
+                <div style={{ position: 'relative', marginBottom: 20 }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: -24,
+                    top: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: 'var(--accent)',
+                    border: '3px solid var(--card-bg)',
+                    boxShadow: '0 0 10px rgba(196, 124, 67, 0.6)'
+                  }} />
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: 'var(--accent-light)', background: 'rgba(196,124,67,0.12)', padding: '2px 8px', borderRadius: 6, marginBottom: 4 }}>
+                    <Clock size={12} /> 07:00 AM
+                  </div>
+                  <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 3px' }}>Staff Reporting Time</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>All personnel arrive on-site in full uniform ready for operational readiness check.</p>
+                </div>
+
+                {/* Step 2: 07:15 AM */}
+                <div style={{ position: 'relative', marginBottom: 20 }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: -24,
+                    top: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: 'var(--accent)',
+                    border: '3px solid var(--card-bg)',
+                    boxShadow: '0 0 10px rgba(196, 124, 67, 0.6)'
+                  }} />
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: 'var(--accent-light)', background: 'rgba(196,124,67,0.12)', padding: '2px 8px', borderRadius: 6, marginBottom: 4 }}>
+                    <Clock size={12} /> 07:15 AM
+                  </div>
+                  <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 3px' }}>Daily Staff Briefing</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Operations alignment, task allocation, track conditions, and safety notices review.</p>
+                </div>
+
+                {/* Step 3: 07:45 AM */}
+                <div style={{ position: 'relative', marginBottom: 20 }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: -24,
+                    top: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: 'var(--accent)',
+                    border: '3px solid var(--card-bg)',
+                    boxShadow: '0 0 10px rgba(196, 124, 67, 0.6)'
+                  }} />
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: 'var(--accent-light)', background: 'rgba(196,124,67,0.12)', padding: '2px 8px', borderRadius: 6, marginBottom: 4 }}>
+                    <Clock size={12} /> 07:45 AM
+                  </div>
+                  <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 3px' }}>Park Readiness Inspection</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Comprehensive opening checklist completed across obstacles, first aid, and machines.</p>
+                </div>
+
+                {/* Step 4: 08:00 AM */}
+                <div style={{ position: 'relative', marginBottom: 20 }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: -24,
+                    top: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: '#22c55e',
+                    border: '3px solid var(--card-bg)',
+                    boxShadow: '0 0 10px rgba(34, 197, 94, 0.6)'
+                  }} />
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: '#4ade80', background: 'rgba(34, 197, 94, 0.12)', padding: '2px 8px', borderRadius: 6, marginBottom: 4 }}>
+                    <Clock size={12} /> 08:00 AM
+                  </div>
+                  <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 3px' }}>Park Official Opening</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>Welcome customers, initiate ticketing, and start off-road track operations.</p>
+                </div>
+
+                {/* Step 5: 08:00 PM */}
+                <div style={{ position: 'relative' }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: -24,
+                    top: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: '#e5995e',
+                    border: '3px solid var(--card-bg)',
+                    boxShadow: '0 0 10px rgba(229, 153, 94, 0.6)'
+                  }} />
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: 'var(--accent-light)', background: 'rgba(229, 153, 94, 0.12)', padding: '2px 8px', borderRadius: 6, marginBottom: 4 }}>
+                    <Clock size={12} /> 08:00 PM
+                  </div>
+                  <h4 style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: '0 0 3px' }}>Park Official Closing</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>End of track operations, evening retreat transitions &amp; initiation of closing SOP.</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
