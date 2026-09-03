@@ -72,11 +72,11 @@ export const bookingPackages: PassPackage[] = [
       'Natural stream water crossing & rockbed trails',
       'Entry to The Nest Eco-Café view terrace deck',
       'Access to Workshop wash & checkup bay',
-      'Clean hygiene hub access (3 Toilets + 3 Showers)'
+      'Clean hygiene hub access (Our Toilets & Shower Rooms)'
     ],
     highlights: [
       { icon: '🏍️', text: 'Motorcycle' },
-      { icon: '⏱️', text: '6h Track Access' },
+      { icon: '⏱️', text: '6 Hours Track Access' },
       { icon: '🌊', text: 'Water Crossing' }
     ]
   },
@@ -94,29 +94,29 @@ export const bookingPackages: PassPackage[] = [
       'Water crossing & off-road track arena',
       '4x4 standby winch recovery support on site',
       'Entry to The Nest Eco-Café view terrace deck',
-      'Clean hygiene hub access (Private Washrooms & Showers)'
+      'Clean hygiene hub access (Our Toilets & Shower Rooms)'
     ],
     highlights: [
       { icon: '🚙', text: 'Car / 4×4' },
-      { icon: '⏱️', text: '6h Track Access' },
+      { icon: '⏱️', text: '6 Hours Track Access' },
       { icon: '🛡️', text: 'Winch Standby' }
     ]
   },
   {
     id: '24h-pass-moto',
-    title: '24-Hour Pass (Motorcycle)',
+    title: '24-Hours Pass (Motorcycle)',
     badge: 'OVERNIGHT • 2-WHEELER',
     price: '₹1,500',
     period: 'per rider',
-    duration: '24 Hours (8h Track Access + Overnight)',
+    duration: '24 Hours (8 Hours Track Access + Overnight)',
     popular: false,
     desc: '8 hours total track access (6 hours regular daytime + exclusive early morning session ~5:00 AM – 8:00 AM). Includes overnight access.',
     features: [
-      '8 Hours total track access (6h daytime + 2h dawn session)',
+      '8 Hours total track access (6 Hours daytime + 2 Hours dawn session)',
       'Exclusive early morning track session (5:00 AM – 8:00 AM)',
       'Overnight sanctuary access & campfire gathering',
       'Park your motorcycle in front of your camping pitch',
-      'Full hygiene hub access with clean toilets & hot showers'
+      'Full hygiene hub access with Our Toilets & Shower Rooms'
     ],
     highlights: [
       { icon: '🏍️', text: 'Motorcycle' },
@@ -126,15 +126,15 @@ export const bookingPackages: PassPackage[] = [
   },
   {
     id: '24h-pass-car',
-    title: '24-Hour Pass (Car / 4×4)',
+    title: '24-Hours Pass (Car / 4×4)',
     badge: 'OVERNIGHT • 4X4 VEHICLE',
     price: '₹2,500',
     period: 'per vehicle',
-    duration: '24 Hours (8h Track Access + Overnight)',
+    duration: '24 Hours (8 Hours Track Access + Overnight)',
     popular: true,
     desc: '8 hours total track access (6 hours regular daytime + exclusive early morning session ~5:00 AM – 8:00 AM). Includes overnight access.',
     features: [
-      '8 Hours total track access (6h daytime + 2h dawn session)',
+      '8 Hours total track access (6 Hours daytime + 2 Hours dawn session)',
       'Exclusive early morning track session (5:00 AM – 8:00 AM)',
       'Overnight sanctuary access & campfire gathering',
       'Direct vehicle parking alongside camping pitch',
@@ -160,7 +160,7 @@ export const bookingPackages: PassPackage[] = [
       'Full Bedding, Clean Bedsheet, Blanket & 2 Pillows',
       'Capacity: Up to 2 guests',
       'Quiet terraced campsite with parking space in front',
-      '24/7 Access to 3 clean private toilets & 3 hot showers'
+      '24/7 Access to Our Toilets & Shower Rooms'
     ],
     highlights: [
       { icon: '🏕️', text: 'Tent + Bedding' },
@@ -176,17 +176,17 @@ export const bookingPackages: PassPackage[] = [
     period: 'per night',
     duration: 'Overnight Stay (Check-in 2:00 PM)',
     popular: false,
-    desc: 'Guests may pitch and use their own tent in the designated camping area.',
+    desc: 'Guests may pitch and use their own tent in the designated camping area. Please bring your own bedsheet & pillow.',
     features: [
-      'Pitch your own tent in the designated camping zone',
+      'Pitch your own tent in designated zone (Please bring bedsheet & pillow)',
       'Park your vehicle quietly directly in front of your pitch',
       'Campfire deck and evening community gatherings',
-      '24/7 Access to 3 clean private toilets & 3 hot showers',
+      '24/7 Access to Our Toilets & Shower Rooms',
       'Workshop tool assistance for gear/tent setup'
     ],
     highlights: [
       { icon: '🎒', text: 'Pitch Own Tent' },
-      { icon: '📍', text: 'Designated Area' },
+      { icon: '🛏️', text: 'Bring Bedsheet & Pillow' },
       { icon: '🚿', text: 'Toilets & Showers' }
     ]
   }
@@ -216,7 +216,7 @@ export const campingOptions: CampingOption[] = [
     features: [
       'Spacious pitched tents with comfortable bedding',
       'Dedicated family bonfire seating circles',
-      'Close proximity to 3 clean private toilets & 3 showers',
+      'Close proximity to Our Toilets & Shower Rooms',
       'Safe, serene environment for all ages'
     ],
     icon: '👨‍👩‍👧‍👦',
@@ -289,7 +289,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'STARRY NIGHT CAMPING',
     category: 'STAY & SERENITY',
-    text: 'Terraced forest camping with personal vehicle parking outside your tent, zero-honk serenity, bonfire circles, and 3 separate clean toilets & 3 showers.',
+    text: 'Terraced forest camping with personal vehicle parking outside your tent, zero-honk serenity, bonfire circles, and Our Toilets & Shower Rooms.',
     image: '/images/camping-under-stars.jpg',
     tag: 'Priority 01'
   },
@@ -324,7 +324,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'PARINDA STORE & RECEPTION',
     category: 'ARRIVAL & GEAR-UP',
-    text: 'Briefing counter featuring a full gear display closet with dressing mirror, showcasing jackets, gloves, and helmets.',
+    text: 'Reception counter featuring a full gear display closet with dressing mirror, showcasing jackets, gloves, and helmets.',
     image: '/images/parinda-store-reception.jpg',
     tag: 'Gear Display'
   },
@@ -346,9 +346,9 @@ export const experiences: ExperienceItem[] = [
 
 // Park Facilities
 export const facilities: FacilityItem[] = [
-  { name: 'Base (Camping Area)', image: '/images/fac-camping.jpg', desc: 'Forest pitches with in-front The Yard vehicle parking & campfire circles', tag: 'Stay #01' },
-  { name: 'The Nest (Cafe and enjoy view place)', image: '/images/the-nest-pavilion-sunset.jpg', desc: 'Open-deck natural timber pavilion with central bonfire & mountain valley view', tag: 'Dining #02' },
-  { name: 'Solid Workshop Bay', image: '/images/parinda-workshop-real.jpg', desc: 'Built of solid materials with full tools, machine stalls & mechanics on duty', tag: 'Service #03' },
+  { name: 'Base (Camping Area)', image: '/images/fac-camping.jpg', desc: 'Forest pitches with vehicle parking outside tent & campfire circles', tag: 'Stay #01' },
+  { name: 'The Nest & View Point', image: '/images/the-nest-pavilion-sunset.jpg', desc: 'Open-deck natural timber pavilion with central bonfire & mountain valley view', tag: 'Dining #02' },
+  { name: 'Solid Workshop Bay', image: '/images/parinda-workshop-real.jpg', desc: 'Built of solid materials with tools, machine stalls & mechanics on duty', tag: 'Service #03' },
   { name: 'Water Crossing', image: '/images/parinda-exp-water-splash.jpg', desc: 'Water stream with rockbed & mud crossing for adventure enthusiasts', tag: 'Tracks #04' },
   { name: 'Reception & Gear Closet', image: '/images/parinda-store-reception.jpg', desc: 'Welcome lounge with gear closet (jackets, helmets, gloves) & mirror', tag: 'Gear Hub #05' },
   { name: 'Our Toilets', image: '/images/hygiene-toilets-hallway.jpg', desc: '' },
@@ -368,13 +368,13 @@ export const parkLocations: ParkLocationItem[] = [
     image: '/images/camping-tents-forest.jpg',
     features: [
       'Forest, Family, & Friends camp options',
-      'Park vehicle quietly in The Yard outside your tent',
+      'Park vehicle quietly outside your tent',
       'Strict zero-honking quiet zone rule',
       'Our Toilets & Our Showers'
     ],
     specs: [
       { label: 'Camp Types', value: 'Forest / Family / Friends' },
-      { label: 'The Yard Parking', value: 'Direct In-Front Pitch' },
+      { label: 'In-Front Pitch', value: 'Direct Vehicle Parking' },
       { label: 'Hygiene Hub', value: 'Private Washrooms & Showers' },
       { label: 'Rule', value: 'No Honking • Pure Serenity' }
     ],
@@ -382,16 +382,15 @@ export const parkLocations: ParkLocationItem[] = [
   },
   {
     id: 'nest',
-    name: 'The Nest - Sustainable Eco-Café',
+    name: 'The Nest & View Point',
     shortName: '2. The Nest Café',
     subtitle: 'Pure Wood & Stone Architecture',
     text: 'An open-deck café built predominantly of natural timber, logs, and stone boulders with minimal metal use. Perched above the valley to observe trail tracks, gather around central bonfires, and refuel.',
     image: '/images/the-nest-sunset-deck.jpg',
     features: [
       '100% Wood & Stone sustainable architecture',
-      'Open timber deck lounge & valley views',
-      'Central bonfire deck & social gathering lounge',
-      'Zero artificial hotel or resort structures'
+      'Valley views and scenic vantage',
+      'Central bonfire deck & social gathering lounge'
     ],
     specs: [
       { label: 'Architecture', value: 'Natural Wood & Stone' },
@@ -432,8 +431,7 @@ export const parkLocations: ParkLocationItem[] = [
     features: [
       'Authentic rockbed & gravel crossing',
       'Sustainable timber & natural materials',
-      'Calibrated for adventure bikes & 4x4 vehicles',
-      'Zero artificial resort pool elements'
+      'Calibrated for adventure bikes & 4x4 vehicles'
     ],
     specs: [
       { label: 'Pondbed Surface', value: 'Natural Stone & Gravel' },
@@ -448,7 +446,7 @@ export const parkLocations: ParkLocationItem[] = [
     name: 'Parinda Store & Reception Lounge',
     shortName: '5. Store & Reception',
     subtitle: 'Check-In, Gear Display & Dressing Mirror',
-    text: 'The sanctuary check-in and briefing area. Features a prominent open gear closet with full-length mirror, showcasing adventure jackets, riding gloves, and branded helmets.',
+    text: 'The sanctuary check-in lounge. Features a prominent open gear closet with full-length mirror, showcasing adventure jackets, riding gloves, and branded helmets.',
     image: '/images/parinda-store-reception.jpg',
     features: [
       'Open gear closet with jackets, helmets & gloves',
@@ -468,80 +466,38 @@ export const parkLocations: ParkLocationItem[] = [
     id: 'nesling',
     name: 'Nesling Kids Park',
     shortName: '6. Nesling Kids Park',
-    subtitle: 'Explore. Play. Grow.',
-    text: 'A dedicated natural forest space for little adventurers to play, learn, create and connect with nature. Safe, engaging, and inspiring with wooden climbing towers, bridges, teepee tent, cycle path, and guided nature activities.',
-    image: '/images/nesling-kids-zone.jpg',
+    subtitle: 'Safe Outdoor Play with Wooden Swings',
+    text: 'A safe, dedicated play arena made entirely with natural wooden swings, small obstacle mounds, and shaded family seating.',
+    image: '/images/fac-nesling.jpg',
     features: [
-      'Explore, Create, Play, Learn & Respect Nature',
-      'Natural wooden climbing tower, bridge & slide',
-      'Teepee tent camp & outdoor activity benches',
-      'Daily activities: Nature Walk, Leaf Art, Story Time, Puzzle Hour'
+      'Natural log swings & balance timber logs',
+      'Small grass mounds & safe play area',
+      'Adjacent shaded seating for parents & guardians'
     ],
     specs: [
-      { label: 'Target Age', value: 'Young Explorers & Families' },
-      { label: 'Safety', value: 'Enclosed Safe Natural Play Area' },
-      { label: 'Daily Activities', value: 'Nature Walk, Leaf Art, Puzzles' },
-      { label: 'Materials', value: '100% Natural Timber & Logs' }
+      { label: 'Material', value: '100% Natural Timber & Logs' },
+      { label: 'Safety', value: 'Enclosed & Soft Ground' },
+      { label: 'Age Group', value: 'Kids & Families' },
+      { label: 'Supervision', value: 'Parent Seating Provided' }
     ],
-    pinCoords: { top: '15%', left: '55%' }
+    pinCoords: { top: '28%', left: '60%' }
   }
 ];
 
-export const galleryImages = [
-  {
-    title: 'Forest Camping & Pitch Bays with In-Front Parking',
-    category: 'Camping',
-    src: '/images/forest-camping-real.jpg',
-    span: 'wide'
-  },
-  {
-    title: 'The Nest Eco-Café Sunset Deck & Bonfire Pit',
-    category: 'The Nest Café',
-    src: '/images/the-nest-sunset-deck.jpg',
-    span: 'tall'
-  },
-  {
-    title: 'Parinda Reception Desk & Open Gear Closet Lounge',
-    category: 'Reception',
-    src: '/images/parinda-reception-lounge.jpg',
-    span: 'wide'
-  },
-  {
-    title: 'Sunrise Lakeside Adventure Bike Staging',
-    category: 'Sanctuary',
-    src: '/images/lake-sunrise-bike.jpg',
-    span: 'tall'
-  },
-  {
-    title: 'Ayush Raj • Founder Exploring Pristine Horizons',
-    category: 'Founder',
-    src: '/images/ayush-raj-founder.jpg',
-    span: 'normal'
-  },
-  {
-    title: 'Natural River Water Crossing 4x4 Splash',
-    category: 'Water Crossing',
-    src: '/images/parinda-exp-water-splash.jpg',
-    span: 'normal'
-  },
-  {
-    title: 'Solid Material Workshop & Certified Mechanics',
-    category: 'Workshop',
-    src: '/images/parinda-workshop-real.jpg',
-    span: 'normal'
-  },
-  {
-    title: 'ADV Motorcycle Skill Training Clinic',
-    category: 'Skill Zone',
-    src: '/images/bike-skill-mound.jpg',
-    span: 'normal'
-  },
-  {
-    title: 'Forest Convoy Expedition Trail',
-    category: 'Overland',
-    src: '/images/4x4-convoy-trail.jpg',
-    span: 'wide'
-  }
+export interface TrackFeatureItem {
+  name: string;
+  category: string;
+  image: string;
+  desc: string;
+}
+
+export const trackFeatures: TrackFeatureItem[] = [
+  { name: 'Water Crossing Stream', category: 'Water Dynamics', image: '/images/track-stream-crossing.jpg', desc: 'Real stream crossing with boulder riverbed and authentic water splash.' },
+  { name: 'Articulation Twister Ramp', category: 'Suspension Test', image: '/images/track-articulation-ramp.jpg', desc: 'Cross-axle moguls and offset ruts to test wheel travel, lockers, and traction.' },
+  { name: 'Steep Incline Ridge Climb', category: 'Approach & Departure', image: '/images/track-steep-incline.jpg', desc: 'Engineered steep dirt & gravel slope with 40-degree gradient challenge.' },
+  { name: 'Rockbed Crawler Garden', category: 'Underbody & Ground Clearance', image: '/images/track-rock-garden.jpg', desc: 'Dense basalt rock field demanding precise wheel placement and high clearance.' },
+  { name: 'Sand & Loose Gravel Trap', category: 'Momentum & Float', image: '/images/track-sand-pit.jpg', desc: 'Deep soft sand trench testing tire momentum, deflation control, and throttle craft.' },
+  { name: 'Forest Ridge Loop Trail', category: 'High-Speed Flow', image: '/images/track-side-slope.jpg', desc: 'Winding woodland single-track trail under deep forest canopy.' }
 ];
 
 export interface ReviewItem {
@@ -555,45 +511,24 @@ export interface ReviewItem {
   verified?: boolean;
 }
 
-export const initialReviews: ReviewItem[] = [
-  {
-    id: 'rev-1',
-    name: 'Rohan Deshmukh',
-    role: 'Adventure Tourer',
-    vehicle: 'Royal Enfield Himalayan 450',
-    rating: 5,
-    date: 'August 2026',
-    comment: 'The natural stream water crossing is authentic and challenging! No gimmicks, pure trail craft. Camped overnight under full moon and had direct motorcycle parking outside my tent.',
-    verified: true
-  },
-  {
-    id: 'rev-2',
-    name: 'Vikram Singh & Convoy',
-    role: 'Overland Explorer',
-    vehicle: 'Mahindra Thar 4x4',
-    rating: 5,
-    date: 'July 2026',
-    comment: 'Parinda is exactly what Indian 4x4 enthusiasts were missing. Testing the articulation ramp and rockbed trail with guidance from local marshals was brilliant. The Nest food is top notch!',
-    verified: true
-  },
-  {
-    id: 'rev-3',
-    name: 'Ananya & Sahil Sharma',
-    role: 'Weekend Camper',
-    vehicle: 'KTM 390 Adventure',
-    rating: 5,
-    date: 'August 2026',
-    comment: 'Clean washrooms, hot water showers, and zero-honking quiet forest vibes. Loved the local Jharkhand hospitality and bonfire evening around The Nest terrace.',
-    verified: true
-  },
-  {
-    id: 'rev-4',
-    name: 'Harpreet Sandhu',
-    role: 'Machine Builder & Rider',
-    vehicle: 'BMW R1250GS',
-    rating: 5,
-    date: 'June 2026',
-    comment: 'The workshop bay is well equipped with high-pressure air and essential tools. Great place for bike prep before heading out on long highway stints.',
-    verified: true
-  }
+export const initialReviews: ReviewItem[] = [];
+
+export interface GalleryItem {
+  src: string;
+  title: string;
+  category: string;
+  span?: 'wide' | 'tall' | 'normal';
+}
+
+export const galleryImages: GalleryItem[] = [
+  { src: '/images/the-nest-pavilion-sunset.jpg', title: 'The Nest & View Point Pavilion', category: 'The Nest Café', span: 'wide' },
+  { src: '/images/camping-bikers-vantage.jpg', title: "The Biker's Edge • Stargazing Camp", category: 'Camping', span: 'normal' },
+  { src: '/images/parinda-exp-water-splash.jpg', title: 'Water Crossing Stream & Splash', category: 'Water Crossing', span: 'tall' },
+  { src: '/images/parinda-workshop-real.jpg', title: 'Solid Heavy-Duty Machine Bay', category: 'Workshop', span: 'normal' },
+  { src: '/images/camping-tents-forest.jpg', title: 'Forest Canopy Pitches', category: 'Camping', span: 'normal' },
+  { src: '/images/parinda-store-reception.jpg', title: 'Reception & Gear Display', category: 'Sanctuary', span: 'wide' },
+  { src: '/images/4x4-convoy-trail.jpg', title: '4x4 Forest Overland Convoy', category: 'Overland', span: 'normal' },
+  { src: '/images/ayush-raj-founder.jpg', title: 'Ayush Raj • Founder Vision', category: 'Founder', span: 'normal' },
+  { src: '/images/bike-skill-mound.jpg', title: 'Off-Road Obstacle & Skills', category: 'Sanctuary', span: 'normal' },
+  { src: '/images/the-nest-sunset-deck.jpg', title: 'Sunset Terrace & Mountain Vista', category: 'The Nest Café', span: 'normal' }
 ];

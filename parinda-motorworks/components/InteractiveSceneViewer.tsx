@@ -49,7 +49,7 @@ export const panoramicScenes: PanoramicScene[] = [
       { label: 'View Type', value: '360° Forest & Lake Panorama' },
       { label: 'Parking', value: 'Direct In-Front Tent Bay' },
       { label: 'Rule', value: 'Zero-Honking Quiet Sanctuary' },
-      { label: 'Hygiene', value: '3 Private Toilets + 3 Showers' }
+      { label: 'Hygiene', value: 'Our Toilets & Shower Rooms' }
     ],
     hotspots: [
       { id: 'c1', title: 'Central Stone Fire Pit', subtitle: 'Acoustic campfire storytelling & BBQ', yaw: 0, pitch: -10, icon: '🔥', tag: 'Bonfire Hub' },

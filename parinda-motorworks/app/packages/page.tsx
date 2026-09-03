@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
@@ -24,8 +24,8 @@ import {
   Check,
   Phone
 } from 'lucide-react';
-import { ParindaLogo } from '../../components/ParindaLogo';
-import { bookingPackages, PassPackage } from '../../data/site';
+import { ParindaLogo } from '@/components/ParindaLogo';
+import { bookingPackages, PassPackage } from '@/data/site';
 
 export default function PackagesPage() {
   const [selectedPass, setSelectedPass] = useState<PassPackage>(bookingPackages[1]); // Default to 24h pass
@@ -57,7 +57,7 @@ export default function PackagesPage() {
       {/* Top Navbar */}
       <header className="nav">
         <a href="/" className="brand" aria-label="Parinda Home">
-          <ParindaLogo size="sm" showSubtitle={true} />
+          <ParindaLogo size="sm" />
         </a>
 
         <div className="nav-back-link">
@@ -78,7 +78,7 @@ export default function PackagesPage() {
             <span>EXPERIENCE PASS.</span>
           </h1>
           <p className="lead" style={{ maxWidth: 700, margin: '14px auto 0' }}>
-            Instant community passes for day excursions, 24-hour overnight camping, and convoy group getaways in the natural forest sanctuary.
+            Instant community passes for day excursions, 24-hours overnight camping, and convoy group getaways in the natural forest sanctuary.
           </p>
         </div>
       </section>
@@ -288,7 +288,7 @@ export default function PackagesPage() {
                       onChange={(e) => setGearAddon(e.target.checked)}
                     />
                     <div>
-                      <b>Adventure Riding Gear Rental (+₹450)</b>
+                      <b>Adventure Riding Gear (+₹450)</b>
                       <span>Armored jacket, trail gloves &amp; helmet from reception closet.</span>
                     </div>
                   </label>
@@ -330,7 +330,7 @@ export default function PackagesPage() {
               )}
               {gearAddon && (
                 <div className="breakdown-row">
-                  <span>Riding Gear Closet Rental</span>
+                  <span>Adventure Riding Gear Closet</span>
                   <b>₹450</b>
                 </div>
               )}
@@ -363,7 +363,7 @@ export default function PackagesPage() {
             <div className="summary-notice">
               <ShieldCheck size={18} color="#c47c43" />
               <p>
-                No advance online payment required. Pay upon arrival at the central reception counter during track safety orientation.
+                Entry allowed: We prefer online payments first because our team may be busy during events and sponsorship.
               </p>
             </div>
           </div>

@@ -32,7 +32,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
     tagline: 'Adventure Meets Excellence',
     image: '/panoramas/reception-360.jpg',
     thumbnail: '/panoramas/reception-360.jpg',
-    category: 'Welcome & Hub',
+    category: 'Reception',
     defaultYaw: 0,
     defaultPitch: 0,
     description:
@@ -58,7 +58,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
       {
         id: 'rec-valley',
         title: 'Scenic Glass Wall',
-        subtitle: 'Proving Ground View',
+        subtitle: 'Off Track View',
         position: [-420, 30, 240],
         targetLocationId: 'offroad',
         type: 'navigation',
@@ -137,7 +137,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
       },
       {
         id: 'camp-tents',
-        title: 'Glamping Grounds',
+        title: 'Camping Grounds',
         subtitle: 'All-Weather Domes',
         position: [380, -90, -280],
         type: 'info',
@@ -177,7 +177,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
       },
       {
         id: 'water-arena',
-        title: 'Off-Road Proving Ground',
+        title: 'Off Track',
         subtitle: 'Drive Through',
         position: [420, 20, 220],
         targetLocationId: 'offroad',
@@ -238,10 +238,10 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
     id: 'offroad',
     slug: 'offroad',
     title: 'Parinda Off-Road Arena',
-    tagline: 'Extreme Articulation & Proving Grounds',
+    tagline: 'Extreme Articulation & Off Track',
     image: '/panoramas/offroad-360.jpg',
     thumbnail: '/panoramas/offroad-360.jpg',
-    category: 'Proving Ground',
+    category: 'Off Track',
     defaultYaw: 0,
     defaultPitch: 0,
     description:
@@ -267,7 +267,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
       {
         id: 'off-valley',
         title: 'Spectator Ridge',
-        subtitle: 'Command Vantage',
+        subtitle: "The Biker's Edge",
         position: [120, 110, 450],
         type: 'info',
         description: 'Overlook the complete multi-acre motorworks track with panoramic alpine mountain backdrop.'

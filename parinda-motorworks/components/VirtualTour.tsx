@@ -34,7 +34,7 @@ export const tourLocations: TourLocation[] = [
     thumbnail: '/images/fac-camping.jpg',
     icon: TentTree,
     description: 'Pitched alpine expedition tents nestled under tall pine trees. Step inside the 360° campground and look around the campfire circle and twilight lake backdrop.',
-    highlights: ['Quiet vehicle parking outside tent', 'Central stone campfire circle', 'Direct access to 3 toilets & 3 showers']
+    highlights: ['Quiet vehicle parking outside tent', 'Central stone campfire circle', 'Direct access to Our Toilets & Shower Rooms']
   },
   {
     id: 'nest-cafe',

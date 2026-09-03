@@ -55,7 +55,7 @@ function VirtualTourContent() {
               360° EXPERIENCE
             </h1>
             <p className="text-sm text-neutral-300 max-w-md mb-8 leading-relaxed">
-              Step inside our world-class adventure mobility haven. Look around in true 3D spherical space, interact with live hotspots, and navigate across all six proving grounds.
+              Step inside our world-class adventure mobility haven. Look around in true 3D spherical space, interact with live hotspots, and navigate across all six off track spaces.
             </p>
 
             {/* Quick Preview pills */}
