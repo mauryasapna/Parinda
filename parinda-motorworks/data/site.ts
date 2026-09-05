@@ -530,7 +530,7 @@ export const galleryImages: GalleryItem[] = [
   { src: '/images/parinda-exp-water-splash.jpg', title: 'Water Crossing Stream & Splash', category: 'Water Crossing', span: 'tall' },
   { src: '/images/parinda-workshop-real.jpg', title: 'Solid Heavy-Duty Machine Bay', category: 'Workshop', span: 'normal' },
   { src: '/images/camping-tents-forest.jpg', title: 'Forest Canopy Pitches', category: 'Camping', span: 'normal' },
-  { src: '/images/parinda-reception-quad.jpg', title: 'Reception & Gear Display', category: 'Sanctuary', span: 'wide' },
+  { src: '/images/parinda-reception-quad.jpg', title: 'Reception & Gear Display', category: 'Sanctuary', span: 'normal' },
   { src: '/images/4x4-convoy-trail.jpg', title: '4x4 Forest Overland Convoy', category: 'Overland', span: 'normal' },
   { src: '/images/ayush-raj-founder.jpg', title: 'Ayush Raj • 52,000km Expedition & Self-Service', category: 'Founder', span: 'normal' },
   { src: '/images/bike-skill-mound.jpg', title: 'Off-Road Obstacle & Skills', category: 'Sanctuary', span: 'normal' },
