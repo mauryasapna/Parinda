@@ -78,8 +78,10 @@ function SphereScene({
           return;
         }
         loadedTex.colorSpace = THREE.SRGBColorSpace;
-        loadedTex.minFilter = THREE.LinearFilter;
-        loadedTex.generateMipmaps = false;
+        loadedTex.generateMipmaps = true;
+        loadedTex.minFilter = THREE.LinearMipmapLinearFilter;
+        loadedTex.magFilter = THREE.LinearFilter;
+        loadedTex.anisotropy = 16;
         loadedTex.wrapS = THREE.RepeatWrapping;
         loadedTex.repeat.x = -1; // Ensures text reads naturally from inside sphere
 
@@ -450,7 +452,7 @@ export default function PanoramaViewer({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[100vh] bg-black overflow-hidden select-none cursor-grab active:cursor-grabbing ${className}`}
+      className={`relative w-full h-full bg-black overflow-hidden select-none cursor-grab active:cursor-grabbing ${className}`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -463,7 +465,8 @@ export default function PanoramaViewer({
     >
       {/* Three.js React Three Fiber 3D Canvas */}
       <Canvas
-        camera={{ position: [0, 0, 0], fov: 75, near: 0.1, far: 2000 }}
+        camera={{ position: [0, 0, 0], fov: 65, near: 0.1, far: 2000 }}
+        dpr={[1, 2]}
         gl={{
           antialias: true,
           powerPreference: 'high-performance',

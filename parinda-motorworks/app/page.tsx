@@ -73,17 +73,21 @@ export default function Home() {
   const [activeLightboxImage, setActiveLightboxImage] = useState<{ src: string; title: string; category: string } | null>(null);
 
   // Reviews State - Genuine User Submissions Only (No Fake Reviews)
-  const [reviewsList, setReviewsList] = useState<ReviewItem[]>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('parinda_user_reviews');
-        if (saved) return JSON.parse(saved);
-      } catch (e) {
-        // fallback
+  const [reviewsList, setReviewsList] = useState<ReviewItem[]>(initialReviews);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('parinda_user_reviews');
+      if (saved && saved.trim()) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setReviewsList(parsed);
+        }
       }
+    } catch {
+      // fallback to initialReviews
     }
-    return initialReviews;
-  });
+  }, []);
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const [newReviewName, setNewReviewName] = useState('');
   const [newReviewVehicle, setNewReviewVehicle] = useState('');

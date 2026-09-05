@@ -39,10 +39,30 @@ export interface PanoramicScene {
 
 export const panoramicScenes: PanoramicScene[] = [
   {
-    id: 'camping-360',
+    id: 'reception-360',
     number: '1',
-    title: '1. Camping 360° View',
-    category: '1. CAMPING 360° VIEW',
+    title: '1. Parinda Store & Reception 360° View',
+    category: '1. PARINDA RECEPTION & GEAR STORE',
+    image: '/panoramas/reception-360.jpg',
+    description: 'Welcome lounge and gear showcase with authentic wooden textures, black leather seating, gear display closet, panoramic mountain glass windows, and direct connection to the service bay.',
+    specs: [
+      { label: 'Feature', value: 'Welcome Desk & VIP Seating' },
+      { label: 'Gear Display', value: 'Armored Jackets, Helmets & Gloves' },
+      { label: 'View', value: 'Panoramic Glass Mountain View' },
+      { label: 'Connection', value: 'Direct Service Bay Access' }
+    ],
+    hotspots: [
+      { id: 'r1', title: 'Parinda Main Reception Desk', subtitle: 'Check-in, orientation & pass verification', yaw: 0, pitch: -6, icon: '🏢', tag: 'Reception' },
+      { id: 'r2', title: 'Gear & Helmet Showcase Closet', subtitle: 'Riding jackets, helmets & trail accessories', yaw: 45, pitch: -2, icon: '🪖', tag: 'Gear Hub' },
+      { id: 'r3', title: 'Machine Service Bay Access', subtitle: 'Sliding bay door to workshop & lifts', yaw: 85, pitch: 0, icon: '🔧', tag: 'Service Bay' },
+      { id: 'r4', title: 'Scenic Mountain Glass Wall', subtitle: 'Direct view into track trails and nature', yaw: -80, pitch: 4, icon: '⛰️', tag: 'Valley View' }
+    ]
+  },
+  {
+    id: 'camping-360',
+    number: '2',
+    title: '2. Camping 360° View',
+    category: '2. CAMPING 360° VIEW',
     image: '/images/scene-camping-360.jpg',
     description: 'Immersive terraced forest campground nestled beneath tall pine trees, featuring a central stone bonfire circle, quiet vehicle parking outside your tent, and a serene lake view horizon.',
     specs: [
@@ -59,9 +79,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'nest-cafe',
-    number: '2',
-    title: '2. Nest (Cafe) with Short High Hills View',
-    category: '2. NEST (CAFE) WITH SHORT HIGH HILLS VIEW',
+    number: '3',
+    title: '3. Nest (Cafe) with Short High Hills View',
+    category: '3. NEST (CAFE) WITH SHORT HIGH HILLS VIEW',
     image: '/images/scene-nest-cafe.jpg',
     description: 'Thatched timber open-deck pavilion perched high on the ridge with a 180° view of turquoise lake islands and surrounding mountain peaks. Features a focused 6-item menu and separate kitchens.',
     specs: [
@@ -78,9 +98,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'workshop-tools',
-    number: '3',
-    title: '3. Workshop - Solid Material & Tools',
-    category: '3. WORKSHOP - SOLID MATERIAL & TOOLS',
+    number: '4',
+    title: '4. Workshop - Solid Material & Tools',
+    category: '4. WORKSHOP - SOLID MATERIAL & TOOLS',
     image: '/images/scene-workshop-tools.jpg',
     description: 'Constructed from solid heavy-duty materials with comprehensive mechanical tools, fabrication workbenches, pneumatic lifts, and parts inventory for off-road machines.',
     specs: [
@@ -97,9 +117,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'bike-mechanics',
-    number: '4',
-    title: '4. Bike Space & Mechanics Work',
-    category: '4. BIKE SPACE & MECHANICS WORK',
+    number: '5',
+    title: '5. Bike Space & Mechanics Work',
+    category: '5. BIKE SPACE & MECHANICS WORK',
     image: '/images/scene-bike-mechanics.jpg',
     description: 'Dedicated indoor and shaded motorcycle service bays with active mechanics performing chain adjustments, tire changes, diagnostics, and suspension tuning.',
     specs: [
@@ -116,9 +136,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'water-crossing',
-    number: '5',
-    title: '5. Water Crossing with Track',
-    category: '5. WATER CROSSING WITH TRACK',
+    number: '6',
+    title: '6. Water Crossing with Track',
+    category: '6. WATER CROSSING WITH TRACK',
     image: '/images/scene-water-crossing.jpg',
     description: 'Shallow mountain stream crossing over pond rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate water spray, pebbles, and transition into forest tracks.',
     specs: [
@@ -135,9 +155,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'natural-pond',
-    number: '6',
-    title: '6. In Water Pond & Swimming (Natural Water)',
-    category: '6. IN WATER POND & SWIMMING (NATURAL WATER)',
+    number: '7',
+    title: '7. In Water Pond & Swimming (Natural Water)',
+    category: '7. IN WATER POND & SWIMMING (NATURAL WATER)',
     image: '/images/scene-natural-pond.jpg',
     description: 'Emerald green fresh mountain water pond with natural cascades, rock waterfalls, and granite ledges. 100% natural swimming pond fed by mountain springs.',
     specs: [
@@ -154,9 +174,9 @@ export const panoramicScenes: PanoramicScene[] = [
   },
   {
     id: 'swimming-pool',
-    number: '7',
-    title: '7. Swimming Pool (Blue Water)',
-    category: '7. SWIMMING POOL (BLUE WATER)',
+    number: '8',
+    title: '8. Swimming Pool (Blue Water)',
+    category: '8. SWIMMING POOL (BLUE WATER)',
     image: '/images/scene-swimming-pool.jpg',
     description: 'Crystal-clear blue water swimming pool surrounded by tropical palm trees, shaded pavilions, and loungers for relaxation after trail drives.',
     specs: [
@@ -215,7 +235,7 @@ export function InteractiveSceneViewer() {
     const deltaX = e.clientX - dragStartRef.current.x;
     const deltaY = e.clientY - dragStartRef.current.y;
 
-    const sensitivity = 0.3 / zoom;
+    const sensitivity = 0.35 / zoom;
     let newYaw = dragStartRef.current.startYaw - deltaX * sensitivity;
     let newPitch = dragStartRef.current.startPitch + deltaY * sensitivity;
 
@@ -232,14 +252,14 @@ export function InteractiveSceneViewer() {
   }, []);
 
   useEffect(() => {
-    if (isDragging) {
+    if (isDragging && typeof window !== 'undefined') {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+      };
     }
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
   // Touch drag handlers for mobile devices
@@ -260,7 +280,7 @@ export function InteractiveSceneViewer() {
     const deltaX = e.touches[0].clientX - dragStartRef.current.x;
     const deltaY = e.touches[0].clientY - dragStartRef.current.y;
 
-    const sensitivity = 0.34 / zoom;
+    const sensitivity = 0.35 / zoom;
     let newYaw = dragStartRef.current.startYaw - deltaX * sensitivity;
     let newPitch = dragStartRef.current.startPitch + deltaY * sensitivity;
 
@@ -276,21 +296,38 @@ export function InteractiveSceneViewer() {
     setIsDragging(false);
   };
 
-  // Wheel zoom handler
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    setZoom((prev) => Math.max(1.0, Math.min(1.7, prev - e.deltaY * 0.001)));
+  // Zoom control
+  const handleZoom = (direction: 'in' | 'out') => {
+    setZoom((prev) => {
+      if (direction === 'in') return Math.min(1.8, +(prev + 0.15).toFixed(2));
+      return Math.max(0.9, +(prev - 0.15).toFixed(2));
+    });
   };
 
-  // Fullscreen toggle
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      handleZoom('in');
+    } else {
+      handleZoom('out');
+    }
+  };
+
+  // Reset view to center
+  const resetView = () => {
+    setYaw(0);
+    setPitch(0);
+    setZoom(1.12);
+    setActiveHotspot(null);
+  };
+
+  // Toggle fullscreen
   const toggleFullscreen = () => {
     if (!containerRef.current) return;
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().catch(() => {});
-      setIsFullscreen(true);
+      containerRef.current.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
-      document.exitFullscreen().catch(() => {});
-      setIsFullscreen(false);
+      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
     }
   };
 
@@ -307,15 +344,15 @@ export function InteractiveSceneViewer() {
           </span>
           <h2>
             DRAG &amp; ROTATE<br />
-            <span>AROUND ALL 7 SCENES.</span>
+            <span>AROUND ALL 8 SCENES.</span>
           </h2>
         </div>
         <p className="copy narrow">
-          Click and drag anywhere on the scene below (or swipe on touchscreens) to rotate 360° in all directions. Explore Camping, The Nest Café, Solid Workshop, Mechanics Bays, Water Crossing, Natural Pond, and Swimming Pool.
+          Click and drag anywhere on the scene below (or swipe on touchscreens) to rotate 360° in all directions. Explore Reception Lounge, Camping, The Nest Café, Solid Workshop, Mechanics Bays, Water Crossing, Natural Pond, and Swimming Pool.
         </p>
       </div>
 
-      {/* Scene Carousel Tabs for All 9 Scenes */}
+      {/* Scene Carousel Tabs for All 8 Scenes */}
       <div className="scene-selector-tabs">
         {panoramicScenes.map((scene) => (
           <button

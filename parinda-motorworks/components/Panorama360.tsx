@@ -50,6 +50,7 @@ export default function Panorama360({
 
     const initViewer = async () => {
       try {
+        if (!isMounted || !containerRef.current) return;
         setLoading(true);
         setError(null);
 
@@ -60,17 +61,24 @@ export default function Panorama360({
 
         // If viewer instance already exists, smoothly change panorama
         if (viewerRef.current) {
-          await viewerRef.current.setPanorama(src, {
-            transition: 'fade-only',
-            speed: 1200
-          });
-          setLoading(false);
+          try {
+            await viewerRef.current.setPanorama(src, {
+              transition: 'fade-only',
+              speed: 1200
+            });
+          } catch {
+            // ignore
+          }
+          if (isMounted) setLoading(false);
           return;
         }
 
+        const el = containerRef.current;
+        if (!el) return;
+
         // Create new Photo Sphere Viewer instance
         const viewer = new Viewer({
-          container: containerRef.current,
+          container: el,
           panorama: src,
           caption: caption || '',
           loadingImg: undefined,
@@ -85,25 +93,32 @@ export default function Panorama360({
           maxFov: 90
         });
 
+        if (!isMounted) {
+          try { viewer.destroy(); } catch {}
+          return;
+        }
+
         viewerRef.current = viewer;
 
-        viewer.addEventListener('ready', () => {
-          if (isMounted) {
-            setLoading(false);
-          }
-        });
+        if (viewer && typeof viewer.addEventListener === 'function') {
+          viewer.addEventListener('ready', () => {
+            if (isMounted) {
+              setLoading(false);
+            }
+          });
 
-        viewer.addEventListener('panorama-loaded', () => {
-          if (isMounted) {
-            setLoading(false);
-          }
-        });
+          viewer.addEventListener('panorama-loaded', () => {
+            if (isMounted) {
+              setLoading(false);
+            }
+          });
 
-        viewer.addEventListener('fullscreen', (e: any) => {
-          if (isMounted) {
-            setIsFullscreen(Boolean(e?.fullscreenEnabled || e?.enabled));
-          }
-        });
+          viewer.addEventListener('fullscreen', (e: any) => {
+            if (isMounted) {
+              setIsFullscreen(Boolean(e?.fullscreenEnabled || e?.enabled));
+            }
+          });
+        }
       } catch (err: any) {
         if (isMounted) {
           setError(err.message || 'Error initializing 360° viewer');
