@@ -2365,32 +2365,39 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 245px;
+  max-width: 252px;
 }
 
 .footer-brand .parinda-brand-lockup {
   width: 100%;
-  max-width: 245px;
+  max-width: 252px;
   display: flex;
   justify-content: flex-start;
 }
 
 .footer-brand .parinda-brand-logo-img {
-  width: 100% !important;
-  max-width: 245px !important;
+  width: 252px !important;
+  max-width: 252px !important;
   height: auto !important;
-  max-height: 60px;
+  max-height: 110px !important;
   object-fit: contain;
   object-position: left center;
+  display: block;
 }
 
 .footer-brand p {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.5;
-  margin-top: 10px;
+  margin-top: 14px;
   width: 100%;
-  max-width: 245px;
+  max-width: 252px;
+  white-space: nowrap;
+}
+
+.footer-brand p span {
+  display: block;
+  white-space: nowrap;
 }
 
 .footer-links {
@@ -2462,12 +2469,13 @@ footer small {
     gap: 30px;
   }
   .footer-brand {
-    max-width: 220px;
+    max-width: 252px;
   }
   .footer-brand .parinda-brand-lockup,
   .footer-brand .parinda-brand-logo-img,
   .footer-brand p {
-    max-width: 220px !important;
+    max-width: 252px !important;
+    width: 252px !important;
   }
 }
 

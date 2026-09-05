@@ -427,8 +427,8 @@ export default function PackagesPage() {
         <div className="footer-brand">
           <ParindaLogo size="lg" />
           <p style={{ marginTop: 14 }}>
-            Adventure Mobility Experience Center.<br />
-            100% Sustainable Forest Sanctuary.
+            <span>Adventure Mobility Experience Center.</span>
+            <span>100% Sustainable Forest Sanctuary.</span>
           </p>
           <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12, color: 'var(--muted)' }}>
             <span>📞 <b>Phone:</b> <a href="tel:+919934906882" style={{ color: 'var(--accent-light)' }}>+91 9934906882</a></span>
