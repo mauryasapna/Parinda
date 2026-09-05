@@ -34,7 +34,7 @@ export const tourLocations: TourLocation[] = [
     thumbnail: '/images/fac-camping.jpg',
     icon: TentTree,
     description: 'Pitched alpine expedition tents nestled under tall pine trees. Step inside the 360° campground and look around the campfire circle and twilight lake backdrop.',
-    highlights: ['Quiet vehicle parking outside tent', 'Central stone campfire circle', 'Direct access to Our Toilets & Shower Rooms']
+    highlights: ['Quiet vehicle parking outside tent', 'Central stone campfire circle', 'Direct access to Toilets & Shower Rooms']
   },
   {
     id: 'nest-cafe',
@@ -83,7 +83,7 @@ export const tourLocations: TourLocation[] = [
     image: '/images/360/water-crossing-360.jpg',
     thumbnail: '/images/parinda-lake-offroad-park.jpg',
     icon: Waves,
-    description: 'Shallow stony stream crossing over rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate dynamic water depths with standby winch support.',
+    description: 'Shallow stony stream crossing over rock beds and gravel. 4x4 SUVs and off-road vehicles navigate dynamic water depths with standby winch support.',
     highlights: ['450mm–700mm calibrated water depth', 'Sustainable timber & wood architecture', 'Dedicated 4x4 standby recovery winch']
   }
 ];

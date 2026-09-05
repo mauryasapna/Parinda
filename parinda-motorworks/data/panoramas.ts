@@ -125,7 +125,7 @@ export const PANORAMA_LOCATIONS: PanoramaLocation[] = [
     defaultYaw: 0,
     defaultPitch: 0.1,
     description:
-      'Night camping experience with colorful tents, campfire circle, motorcycles, mountain valley, stars, moon and warm campsite lighting.',
+      'Experience night camping with colorful tents, campfire circle, motorcycles, mountain valley, stars, moon and warm campsite lighting.',
     hotspots: [
       {
         id: 'camp-fire',

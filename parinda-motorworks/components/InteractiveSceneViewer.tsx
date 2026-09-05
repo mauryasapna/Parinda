@@ -69,7 +69,7 @@ export const panoramicScenes: PanoramicScene[] = [
       { label: 'View Type', value: '360° Forest & Lake Panorama' },
       { label: 'Parking', value: 'Direct In-Front Tent Bay' },
       { label: 'Rule', value: 'Zero-Honking Quiet Sanctuary' },
-      { label: 'Hygiene', value: 'Our Toilets & Shower Rooms' }
+      { label: 'Hygiene', value: 'Toilets & Shower Rooms' }
     ],
     hotspots: [
       { id: 'c1', title: 'Central Stone Fire Pit', subtitle: 'Acoustic campfire storytelling & BBQ', yaw: 0, pitch: -10, icon: '🔥', tag: 'Bonfire Hub' },
@@ -102,10 +102,10 @@ export const panoramicScenes: PanoramicScene[] = [
     title: '4. Workshop - Solid Material & Tools',
     category: '4. WORKSHOP - SOLID MATERIAL & TOOLS',
     image: '/images/scene-workshop-tools.jpg',
-    description: 'Constructed from solid heavy-duty materials with comprehensive mechanical tools, fabrication workbenches, pneumatic lifts, and parts inventory for off-road machines.',
+    description: 'Constructed from solid heavy-duty materials with comprehensive mechanical tools, fabrication workbenches, and parts inventory for off-road machines.',
     specs: [
       { label: 'Construction', value: 'Solid Heavy-Duty Build' },
-      { label: 'Tooling', value: 'Full Power, Hand & Pneumatic Tools' },
+      { label: 'Tooling', value: 'Full Power & Hand Tools' },
       { label: 'Capacity', value: 'Multi-Machine Fabrication & Tuning' },
       { label: 'Staffing', value: 'Certified On-Site Technicians' }
     ],
@@ -140,7 +140,7 @@ export const panoramicScenes: PanoramicScene[] = [
     title: '6. Water Crossing with Track',
     category: '6. WATER CROSSING WITH TRACK',
     image: '/images/scene-water-crossing.jpg',
-    description: 'Shallow mountain stream crossing over pond rockbeds and gravel. 4x4 SUVs and off-road vehicles navigate water spray, pebbles, and transition into forest tracks.',
+    description: 'Shallow mountain stream crossing over pond rock beds and gravel. 4x4 SUVs and off-road vehicles navigate water spray, pebbles, and transition into forest tracks.',
     specs: [
       { label: 'Water Depth', value: '450mm - 700mm Dynamic Wading' },
       { label: 'Pondbed Surface', value: 'Natural Stone & Gravel' },

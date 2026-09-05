@@ -33,8 +33,6 @@ export default function PackagesPage() {
   const [selectedDate, setSelectedDate] = useState<string>('2026-09-15');
   const [vehicleType, setVehicleType] = useState<'motorcycle' | '4x4' | 'both'>('motorcycle');
   const [tentAddon, setTentAddon] = useState<boolean>(true);
-  const [bonfireAddon, setBonfireAddon] = useState<boolean>(true);
-  const [gearAddon, setGearAddon] = useState<boolean>(false);
   const [fullName, setFullName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [bookingConfirmed, setBookingConfirmed] = useState<boolean>(false);
@@ -42,7 +40,7 @@ export default function PackagesPage() {
 
   // Extract base numerical price
   const basePrice = parseInt(selectedPass.price.replace(/[^0-9]/g, '')) || 999;
-  const addonsTotal = (tentAddon ? 500 : 0) + (bonfireAddon ? 350 : 0) + (gearAddon ? 450 : 0);
+  const addonsTotal = tentAddon ? 599 : 0;
   const totalPrice = basePrice * guestsCount + addonsTotal;
 
   const handleBookingSubmit = (e: React.FormEvent) => {
@@ -266,30 +264,8 @@ export default function PackagesPage() {
                       onChange={(e) => setTentAddon(e.target.checked)}
                     />
                     <div>
-                      <b>Rent a Tent (Do-It-Yourself Pitching) (+₹500)</b>
+                      <b>Rent a Tent (Do-It-Yourself Pitching) (+₹599)</b>
                       <span>High-grade waterproof tent provided for self-pitching in your bay.</span>
-                    </div>
-                  </label>
-                  <label className={`addon-item ${bonfireAddon ? 'checked' : ''}`}>
-                    <input
-                      type="checkbox"
-                      checked={bonfireAddon}
-                      onChange={(e) => setBonfireAddon(e.target.checked)}
-                    />
-                    <div>
-                      <b>Dedicated Woodfire BBQ Kit (+₹350)</b>
-                      <span>Oakwood bundle, skewer set &amp; campfire lighting.</span>
-                    </div>
-                  </label>
-                  <label className={`addon-item ${gearAddon ? 'checked' : ''}`}>
-                    <input
-                      type="checkbox"
-                      checked={gearAddon}
-                      onChange={(e) => setGearAddon(e.target.checked)}
-                    />
-                    <div>
-                      <b>Adventure Riding Gear (+₹450)</b>
-                      <span>Armored jacket, trail gloves &amp; helmet from reception closet.</span>
                     </div>
                   </label>
                 </div>
@@ -319,19 +295,7 @@ export default function PackagesPage() {
               {tentAddon && (
                 <div className="breakdown-row">
                   <span>Rent a Tent (Do-It-Yourself Pitching)</span>
-                  <b>₹500</b>
-                </div>
-              )}
-              {bonfireAddon && (
-                <div className="breakdown-row">
-                  <span>Dedicated Woodfire BBQ Kit</span>
-                  <b>₹350</b>
-                </div>
-              )}
-              {gearAddon && (
-                <div className="breakdown-row">
-                  <span>Adventure Riding Gear Closet</span>
-                  <b>₹450</b>
+                  <b>₹599</b>
                 </div>
               )}
               <hr style={{ borderColor: 'var(--line)', margin: '14px 0' }} />
@@ -344,7 +308,7 @@ export default function PackagesPage() {
             <div className="summary-perks">
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
-                <span>Zero-honk peaceful front-of-camp parking</span>
+                <span>Zero-honk peaceful parking near your pitched tent</span>
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
@@ -352,7 +316,7 @@ export default function PackagesPage() {
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
-                <span>The Nest Eco-Café separate Veg/Non-Veg kitchen access</span>
+                <span>The Nest separate Veg/Non-Veg kitchen access</span>
               </div>
               <div className="perk">
                 <CheckCircle2 size={16} color="#68d391" />
@@ -363,7 +327,7 @@ export default function PackagesPage() {
             <div className="summary-notice">
               <ShieldCheck size={18} color="#c47c43" />
               <p>
-                Entry allowed: We prefer online payments first because our team may be busy during events and sponsorship.
+                Entry allowed: We prefer online reservations first.
               </p>
             </div>
           </div>
@@ -485,29 +449,37 @@ export default function PackagesPage() {
         <small>© 2026 Parinda. All Rights Reserved. Adventure Mobility Experience Center.</small>
       </footer>
 
-      {/* MOBILE STICKY QUICK ACTION BAR */}
-      <div className="mobile-sticky-bar">
-        <a
-          href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bar-btn primary"
-        >
-          <Share2 size={15} /> Book Pass
-        </a>
-        <a
-          href="#booking-form-section"
-          className="bar-btn secondary"
-        >
-          Customize Pass (₹{totalPrice.toLocaleString()})
-        </a>
-        <a
-          href="tel:+919934906882"
-          className="bar-btn call-btn"
-          aria-label="Call Direct Support"
-        >
-          <Phone size={15} />
-        </a>
+      {/* BOTTOM ACTION BAR (RESPONSIVE FOR BOTH MOBILE & DESKTOP) */}
+      <div className="packages-action-bar-container">
+        <div className="packages-action-bar-inner">
+          <div className="packages-action-price-info">
+            <span className="action-selected-title">{selectedPass.title} ({guestsCount} {guestsCount > 1 ? 'Guests' : 'Guest'})</span>
+            <b className="action-total-price">₹{totalPrice.toLocaleString()}</b>
+          </div>
+          <div className="packages-action-buttons">
+            <a
+              href="#booking-form-section"
+              className="bar-btn secondary"
+            >
+              Customize Pass (₹{totalPrice.toLocaleString()})
+            </a>
+            <a
+              href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bar-btn primary"
+            >
+              <Share2 size={15} /> Book Pass
+            </a>
+            <a
+              href="tel:+919934906882"
+              className="bar-btn call-btn"
+              aria-label="Call Direct Support"
+            >
+              <Phone size={15} />
+            </a>
+          </div>
+        </div>
       </div>
     </main>
   );
