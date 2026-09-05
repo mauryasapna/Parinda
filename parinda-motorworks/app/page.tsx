@@ -890,7 +890,6 @@ export default function Home() {
                   <div className="camping-facility-header">
                     <h4>
                       <TentTree size={18} color="#c47c43" /> Rent a Tent
-                      <span style={{ fontSize: 10, color: 'var(--accent-light)', border: '1px solid var(--accent)', padding: '1px 6px', borderRadius: 4, marginLeft: 6, fontWeight: 700 }}>RAT</span>
                     </h4>
                     <span className="camping-facility-price">₹599 <small style={{ fontSize: 11, color: 'var(--muted)', fontWeight: 400 }}>/ night</small></span>
                   </div>
@@ -907,7 +906,7 @@ export default function Home() {
                 </div>
 
                 <a className="btn ghost" href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20reserve%20a%20Tent%20Stay." target="_blank" rel="noopener noreferrer" style={{ width: '100%', justifyContent: 'center' }}>
-                  Reserve Tent <ArrowRight size={14} />
+                  Reserve RAT <ArrowRight size={14} />
                 </a>
               </div>
 
@@ -980,10 +979,10 @@ export default function Home() {
 
           <div
             className="reception-visual"
-            onClick={() => setActiveLightboxImage({ src: '/images/parinda-store-reception.jpg', title: 'Parinda Store & Reception - Panoramic Lounge, Gear Closet & Service Bay Connection', category: 'Store & Reception' })}
+            onClick={() => setActiveLightboxImage({ src: '/images/parinda-reception-quad.jpg', title: 'Parinda Reception & Store - Quad View (Lounge, Service Bay, Ceiling & Floor Plan)', category: 'Store & Reception' })}
             style={{ cursor: 'pointer' }}
           >
-            <img src="/images/parinda-store-reception.jpg" alt="Parinda Store & Reception - Welcome Lounge, Gear Display & Service Bay Connection" />
+            <img src="/images/parinda-reception-quad.jpg" alt="Parinda Store & Reception - Welcome Lounge, Gear Display & Service Bay Connection" />
             <div className="image-caption-badge">
               <span>RECEPTION LOUNGE • GEAR CLOSET • SERVICE BAY CONNECTION</span>
             </div>
@@ -1774,7 +1773,7 @@ export default function Home() {
           <div>
             <Compass size={32} />
             <h3>4x4 Standby Recovery</h3>
-            <p>Dedicated 4x4 heavy-duty winch and mechanical recovery support on active standby across all tracks.</p>
+            <p>Dedicated heavy duty winch and mechanical recovery support on active standby across the campus.</p>
           </div>
           <div>
             <Sparkles size={32} />

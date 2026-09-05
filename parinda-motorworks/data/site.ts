@@ -329,7 +329,7 @@ export const experiences: ExperienceItem[] = [
     title: 'PARINDA STORE & RECEPTION',
     category: 'ARRIVAL & GEAR-UP',
     text: 'Reception counter featuring a full gear display closet with dressing mirror, showcasing jackets, gloves, and helmets.',
-    image: '/images/parinda-store-reception.jpg',
+    image: '/images/parinda-reception-quad.jpg',
     tag: 'Gear Display'
   },
   {
@@ -354,7 +354,7 @@ export const facilities: FacilityItem[] = [
   { name: 'The Nest & View Point', image: '/images/the-nest-pavilion-sunset.jpg', desc: 'Open-deck natural timber pavilion with central bonfire & mountain valley view', tag: 'Dining #02' },
   { name: 'Solid Workshop Bay', image: '/images/parinda-workshop-real.jpg', desc: 'Built of solid materials with tools, machine stalls & mechanics on duty', tag: 'Service #03' },
   { name: 'Water Crossing', image: '/images/parinda-exp-water-splash.jpg', desc: 'Water stream with rock bed & mud crossing for adventure enthusiasts', tag: 'Tracks #04' },
-  { name: 'Reception & Gear Closet', image: '/images/parinda-store-reception.jpg', desc: 'Welcome lounge with gear closet (jackets, helmets, gloves) & mirror', tag: 'Gear Hub #05' },
+  { name: 'Reception & Gear Closet', image: '/images/parinda-reception-quad.jpg', desc: 'Welcome lounge with gear closet (jackets, helmets, gloves) & mirror', tag: 'Gear Hub #05' },
   { name: 'Toilets', image: '/images/hygiene-toilets-hallway.jpg', desc: '' },
   { name: 'Showers', image: '/images/hygiene-private-shower.jpg', desc: '' },
   { name: '4x4 Standby Recovery', image: '/images/4x4-convoy-trail.jpg', desc: 'Dedicated 4x4 heavy-duty winch & recovery equipment on active standby', tag: 'Recovery #08' },
@@ -451,7 +451,7 @@ export const parkLocations: ParkLocationItem[] = [
     shortName: '5. Store & Reception',
     subtitle: 'Check-In, Gear Display & Dressing Mirror',
     text: 'The sanctuary check-in lounge. Features a prominent open gear closet with full-length mirror, showcasing adventure jackets, riding gloves, and branded helmets.',
-    image: '/images/parinda-store-reception.jpg',
+    image: '/images/parinda-reception-quad.jpg',
     features: [
       'Open gear closet with jackets, helmets & gloves',
       'Full-length dressing mirror for gear fitting',
@@ -530,7 +530,7 @@ export const galleryImages: GalleryItem[] = [
   { src: '/images/parinda-exp-water-splash.jpg', title: 'Water Crossing Stream & Splash', category: 'Water Crossing', span: 'tall' },
   { src: '/images/parinda-workshop-real.jpg', title: 'Solid Heavy-Duty Machine Bay', category: 'Workshop', span: 'normal' },
   { src: '/images/camping-tents-forest.jpg', title: 'Forest Canopy Pitches', category: 'Camping', span: 'normal' },
-  { src: '/images/parinda-store-reception.jpg', title: 'Reception & Gear Display', category: 'Sanctuary', span: 'wide' },
+  { src: '/images/parinda-reception-quad.jpg', title: 'Reception & Gear Display', category: 'Sanctuary', span: 'wide' },
   { src: '/images/4x4-convoy-trail.jpg', title: '4x4 Forest Overland Convoy', category: 'Overland', span: 'normal' },
   { src: '/images/ayush-raj-founder.jpg', title: 'Ayush Raj • 52,000km Expedition & Self-Service', category: 'Founder', span: 'normal' },
   { src: '/images/bike-skill-mound.jpg', title: 'Off-Road Obstacle & Skills', category: 'Sanctuary', span: 'normal' },

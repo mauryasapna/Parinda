@@ -773,38 +773,120 @@ h2 span {
 
 .image-card {
   position: relative;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  background: #0c0d0a;
 }
 
 .image-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  transition: transform 0.8s ease;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .image-card:hover img {
   transform: scale(1.04);
 }
 
+/* CAMPING SECTION VISUAL CARDS */
+.visuals-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.featured-visual-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 16 / 9.5;
+  width: 100%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  background: #0c0d0a;
+  cursor: pointer;
+}
+
+.featured-visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.featured-visual-card:hover img {
+  transform: scale(1.03);
+}
+
+.sub-visuals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+.sub-visual-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+  background: #0c0d0a;
+  cursor: pointer;
+}
+
+.sub-visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.sub-visual-card:hover img {
+  transform: scale(1.04);
+}
+
 .image-caption-badge {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(12, 13, 10, 0.85);
+  bottom: 14px;
+  left: 14px;
+  background: rgba(12, 13, 10, 0.88);
   border: 1px solid var(--line-light);
   backdrop-filter: blur(10px);
-  padding: 10px 16px;
+  -webkit-backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 3px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px;
+  font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--paper);
-  z-index: 10;
+  z-index: 5;
+  pointer-events: none;
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.image-caption-badge span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .stats {
@@ -2088,21 +2170,30 @@ h2 span {
   border-color: var(--accent);
 }
 
-.gallery-grid {
+.gallery-grid,
+.gallery-grid-curated {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
   grid-auto-flow: dense;
 }
 
 .gallery-item {
   position: relative;
-  height: 220px;
-  border-radius: 6px;
+  height: 240px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   overflow: hidden;
   cursor: pointer;
   background: #141512;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
 }
 
 .gallery-item.wide {
@@ -2111,52 +2202,61 @@ h2 span {
 
 .gallery-item.tall {
   grid-row: span 2;
-  height: 454px;
+  height: 496px;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .gallery-item:hover img {
   transform: scale(1.05);
 }
 
+.gallery-overlay,
 .gallery-item-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(12, 13, 10, 0.92) 0%, rgba(12, 13, 10, 0.3) 45%, transparent 80%);
+  background: linear-gradient(0deg, rgba(12, 13, 10, 0.95) 0%, rgba(12, 13, 10, 0.4) 40%, transparent 75%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 14px 16px;
+  padding: 18px 20px;
   opacity: 0.95;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
+.gallery-item:hover .gallery-overlay,
 .gallery-item:hover .gallery-item-overlay {
   opacity: 1;
 }
 
+.gallery-cat,
 .gallery-item-overlay span.cat {
-  font-size: 8.5px;
+  font-size: 9.5px;
   letter-spacing: 1.5px;
   color: var(--accent-light);
   text-transform: uppercase;
   font-weight: 700;
+  margin-bottom: 2px;
+  display: block;
 }
 
+.gallery-overlay h4,
 .gallery-item-overlay h4 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px;
-  margin: 2px 0 0;
+  font-size: 18px;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1.2;
+  color: #fff;
 }
 
 /* LIGHTBOX MODAL */
@@ -5562,7 +5662,7 @@ footer small {
     padding: 14px 16px;
   }
 
-  /* Facilities Grid */
+  /* Facilities Grid on Mobile */
   .facility-grid {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -5572,14 +5672,58 @@ footer small {
     padding: 18px 16px;
   }
 
-  /* Gallery Grid */
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .facility-img-wrap {
+    height: 190px;
   }
 
+  /* Gallery Grid on Mobile */
+  .gallery-grid,
+  .gallery-grid-curated {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gallery-item,
   .gallery-card {
     height: 220px;
+  }
+
+  .gallery-item.wide,
+  .gallery-item.tall {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 220px;
+  }
+
+  /* Image Visual Containers on Mobile */
+  .visuals-col,
+  .nest-visuals,
+  .experiences-visuals-pair {
+    width: 100%;
+  }
+
+  .featured-visual-card,
+  .nest-visual-main,
+  .workshop-visual,
+  .reception-visual,
+  .experiences-visual-card {
+    aspect-ratio: 16 / 9.5;
+    max-height: 260px;
+    width: 100%;
+  }
+
+  .sub-visuals-grid,
+  .nest-visual-side {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .sub-visual-card,
+  .nest-visual-side > div {
+    aspect-ratio: 16 / 11;
+    max-height: 145px;
+    width: 100%;
   }
 
   /* Lightbox on Mobile */
