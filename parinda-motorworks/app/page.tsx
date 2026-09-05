@@ -1917,29 +1917,29 @@ export default function Home() {
                 className="lightbox-close"
                 onClick={() => setReviewModalOpen(false)}
               >
-                <X size={18} /> Close
+                <X size={16} /> Close
               </button>
 
-              <div style={{ marginBottom: 18 }}>
-                <span className="priority-pill">COMMUNITY VOICES</span>
-                <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: 26, margin: '6px 0 0', textTransform: 'uppercase' }}>
+              <div style={{ marginBottom: 12 }}>
+                <span className="priority-pill" style={{ fontSize: 10, padding: '2px 7px' }}>COMMUNITY VOICES</span>
+                <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: 22, margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   Share Your Parinda Experience
                 </h3>
-                <p style={{ fontSize: 13, color: 'var(--muted)', margin: '4px 0 0' }}>
+                <p style={{ fontSize: 12, color: 'var(--muted)', margin: '2px 0 0' }}>
                   Your feedback helps fellow riders and off-road explorers prepare for the trail.
                 </p>
               </div>
 
               {reviewSubmitSuccess ? (
-                <div style={{ padding: '30px 20px', textAlign: 'center', background: 'rgba(104, 211, 145, 0.1)', border: '1px solid #68d391', borderRadius: 8 }}>
-                  <CheckCircle2 size={40} color="#68d391" style={{ margin: '0 auto 12px' }} />
-                  <h4 style={{ fontSize: 20, color: '#fff', margin: 0 }}>Thank You for Your Review!</h4>
-                  <p style={{ fontSize: 13, color: '#a0aec0', marginTop: 6 }}>Your experience has been posted to the community feed.</p>
+                <div style={{ padding: '24px 16px', textAlign: 'center', background: 'rgba(104, 211, 145, 0.1)', border: '1px solid #68d391', borderRadius: 8 }}>
+                  <CheckCircle2 size={36} color="#68d391" style={{ margin: '0 auto 8px' }} />
+                  <h4 style={{ fontSize: 18, color: '#fff', margin: 0 }}>Thank You for Your Review!</h4>
+                  <p style={{ fontSize: 12, color: '#a0aec0', marginTop: 4 }}>Your experience has been posted to the community feed.</p>
                 </div>
               ) : (
-                <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                   <div>
-                    <label style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--accent-light)', display: 'block', marginBottom: 4 }}>
+                    <label style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: 'var(--accent-light)', display: 'block', marginBottom: 2 }}>
                       Your Rating
                     </label>
                     <div className="star-rating-picker">
@@ -1949,9 +1949,10 @@ export default function Home() {
                           type="button"
                           className="star-btn"
                           onClick={() => setNewReviewRating(star)}
+                          title={`${star} Stars`}
                         >
                           <Star
-                            size={24}
+                            size={18}
                             fill={star <= newReviewRating ? '#f6ad55' : 'transparent'}
                             color={star <= newReviewRating ? '#f6ad55' : '#4a5568'}
                           />
@@ -1960,36 +1961,36 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="form-group-row">
-                    <div className="form-field">
-                      <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Full Name</label>
+                  <div className="form-group-row" style={{ gap: 8 }}>
+                    <div className="form-field" style={{ flex: 1 }}>
+                      <label style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', marginBottom: 3, display: 'block' }}>Your Full Name</label>
                       <input
                         type="text"
                         required
                         placeholder="e.g. Rahul Sharma"
                         value={newReviewName}
                         onChange={(e) => setNewReviewName(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                        style={{ width: '100%', padding: '7px 10px', fontSize: 12, background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
                       />
                     </div>
-                    <div className="form-field">
-                      <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Machine / Vehicle</label>
+                    <div className="form-field" style={{ flex: 1 }}>
+                      <label style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', marginBottom: 3, display: 'block' }}>Machine / Vehicle</label>
                       <input
                         type="text"
                         placeholder="e.g. Himalayan 450 / Thar 4x4"
                         value={newReviewVehicle}
                         onChange={(e) => setNewReviewVehicle(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                        style={{ width: '100%', padding: '7px 10px', fontSize: 12, background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
                       />
                     </div>
                   </div>
 
                   <div className="form-field">
-                    <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Experience / Role</label>
+                    <label style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', marginBottom: 3, display: 'block' }}>Your Experience / Role</label>
                     <select
                       value={newReviewRole}
                       onChange={(e) => setNewReviewRole(e.target.value)}
-                      style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
+                      style={{ width: '100%', padding: '7px 10px', fontSize: 12, background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4 }}
                     >
                       <option value="Adventure Rider">Adventure Rider</option>
                       <option value="4x4 SUV Explorer">4x4 SUV Explorer</option>
@@ -2001,23 +2002,23 @@ export default function Home() {
                   </div>
 
                   <div className="form-field">
-                    <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Your Review &amp; Experience Details</label>
+                    <label style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', marginBottom: 3, display: 'block' }}>Your Review &amp; Experience Details</label>
                     <textarea
                       required
-                      rows={4}
+                      rows={2}
                       placeholder="Share what you liked about the track, camping, hospitality, or amenities..."
                       value={newReviewComment}
                       onChange={(e) => setNewReviewComment(e.target.value)}
-                      style={{ width: '100%', padding: '10px 14px', background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4, resize: 'vertical' }}
+                      style={{ width: '100%', padding: '7px 10px', fontSize: 12, background: '#0c0d0a', border: '1px solid var(--line-light)', color: '#fff', borderRadius: 4, resize: 'vertical', minHeight: '52px', maxHeight: '90px' }}
                     />
                   </div>
 
                   <button
                     type="submit"
                     className="btn primary"
-                    style={{ width: '100%', justifyContent: 'center', marginTop: 6 }}
+                    style={{ width: '100%', justifyContent: 'center', marginTop: 4, padding: '10px 16px', fontSize: 13, fontWeight: 700 }}
                   >
-                    Submit Review <Send size={15} />
+                    Submit Review <Send size={14} />
                   </button>
                 </form>
               )}
@@ -2059,9 +2060,9 @@ export default function Home() {
           href="https://wa.me/919934906882?text=Hello%20Parinda%2C%20I%20want%20to%20book%20a%20pass."
           target="_blank"
           rel="noopener noreferrer"
-          className="mobile-sticky-btn primary"
+          className="bar-btn primary"
         >
-          <Ticket size={16} /> Book Pass
+          <Ticket size={14} /> Book Pass
         </a>
         <a
           href="/packages"
